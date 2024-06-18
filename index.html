@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing</title>
+    <link rel="icon" href="splendify icon.svg" type="image/x-icon">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
+    header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 98vw;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+        align-items: center;
+    }
+    .logo {
+        height: 40px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 40px;
+        line-height: 150%;
+
+    }
+    h2 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 150%;
+    }
+    p {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .div-row {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .div-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+    .div-input {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    input {
+        border-radius: 10px;
+        background: var(--background-SoftWhite, #FAFAFA);
+        padding: 10px 20px;
+        placeholder-color: #C7C7C7;
+        border: 0;
+        font-size: 15px;
+    }
+    .input-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    button {
+        display: flex;
+        padding: 20px 50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        border: 0;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .button-primary {
+        background: var(--gradientPrimary, linear-gradient(112deg, #35C0A7 28.6%, #5BD9BB 100%));
+        color: white;
+        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.10);
+    }
+    .button-secondary {
+        background: var(--secondaryColor-Light, #ABF1DD);
+        color: #518575;
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        padding: 100px 20vw;
+    }
+    section h2 {
+        text-align: center;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0px;
+        max-height: 100vh;
+    }
+    .partner-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+    .partner-logo {
+        width: 100%;
+        border-radius: 30px;
+        box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.10);
+    }
+    .subtitle-form {
+        line-height: 150%;
+        font-size: 20px;
+    }
+    
+    .client-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        justify-items: center;
+    }
+    .client-logo {
+        width: 100%;
+    }
+
+    .showcase-section {
+        gap: 25px;
+        display: flex;
+        flex-direction: row;
+    }
+    .showcase-image {
+        scale: 0.7;
+    }
+
+    .platform-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+    .platform-item {
+        width: 100%;
+    }
+
+    .step-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+        margin: auto;
+    }
+    .step-item {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        width: 400px;
+    }
+    .step-logo {
+        width: 80px;
+    }
+    .step-number {
+        font-size: 15px;
+        font-weight: 100;
+    }
+    .step-item p {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .FAQ-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .FAQ-question {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background-color: #fafafa;
+        padding: 15px 25px;
+        border-radius: 10px;
+    }
+    .FAQ-question p {
+        font-size: 20px;
+        line-height: 150%;
+    }
+    .FAQ-question img {
+        width: 20px;
+    }
+    .FAQ-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 150%;
+    }
+    .FAQ-answer {
+        padding: 15px 25px;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        line-height: 150%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .testimonial-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .testimonial-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+        border-radius: 15px;
+        background-color: #F8F8F8;
+        min-width: 150px;
+    }
+    .testimonial-item p {
+        line-height: 150% ;
+    }
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 150%;
+        font-style: italic;
+    }
+
+</style>
+
+<body>
+    <header>
+        <img src="splendify.svg" alt="" class="logo">
+        <div class="div-row" style="align-items: center;">
+            <p class="bold">Are you ready to get 10x return for your business?</p>
+            <button class="button-primary">Yes, help me get 10x ROI for my business</button>
+        </div>
+    </header>
+    <section class="hero" style="background: var(--gradientPrimary, linear-gradient(112deg, #35C0A7 28.6%, #5BD9BB 100%)); color: white;">
+        <div class="div-column" style="max-width: 50%;">
+            <h1>Struggling with Conversions & Client Show-Ups
+                for Your Beauty & Wellness Business?
+                <br>
+                Splendify Can Drive Up To 12X ROI For You!
+            </h1>
+            <p class="subtitle-form">Singapore’s No.1 Health & Wellness-Focused Digital Marketing Agency. Fill up the form & we’ll get in touch with you!</p>
+            <form action="">
+                <div class="input-wrapper">
+                    <div class="div-input">
+                        <p>Name</p>
+                        <input type="text" name="name" placeholder="Enter your name">
+                    </div>
+                    <div class="div-input">
+                        <p>Email</p>
+                        <input type="text" name="email" placeholder="Enter your work or personal email">
+                    </div>
+                    <div class="div-input">
+                        <p>Company</p>
+                        <input type="text" name="company" placeholder="Enter your company name">
+                    </div>
+                    <div class="div-input">
+                        <p>Phone</p>
+                        <input type="text" name="phone" placeholder="Enter your work or phone number">
+                    </div>
+                </div>
+                <div class="div-row">
+                    <input type="checkbox" name="agree">
+                    <p>I agree to be contacted by Splendify either by email or phone</p>
+                </div>
+                </form>
+            <button class="button-secondary" onclick="window.location.href = 'https://wa.me/6581220000?text='+encodeURIComponent('Hi Splendify, I am interested in your services. My name is '+document.querySelector('input[name=\'name\']').value+' and I work at '+document.querySelector('input[name=\'company\']').value+'. My phone number is '+document.querySelector('input[name=\'phone\']').value+'. My email address is '+document.querySelector('input[name=\'email\']').value)">Yes, help me get 10x return for my business</button>
+        </div>
+        <img src="hero-image.png" alt="" style="width: 500px;">
+    </section>
+    <section name="Official Partner">
+        <h2>Official Partners</h2>
+        <div class="partner-wrapper">
+            <img class="partner-logo" src="partner/google.png" alt="">
+            <img class="partner-logo" src="partner/meta.png" alt="">
+            <img class="partner-logo" src="partner/xiao.png" alt="">
+            <img class="partner-logo" src="partner/tiktok.png" alt="">
+            <img class="partner-logo" src="partner/linkedin.png" alt="">
+        </div>
+    </section>
+    <section name="clients">
+        <h2>Over 250 Health, Beauty and Wellness Clients Trust SPLENDIFY</h2>
+        <div class="client-wrapper">
+            <img class="client-logo" src="brand/drhaach.png" alt="drhaach">
+            <img class="client-logo" src="brand/haach.png" alt="haach">
+            <img class="client-logo" src="brand/fil.png" alt="fil">
+            <img class="client-logo" src="brand/passage.png" alt="passage">
+            <img class="client-logo" src="brand/drscalp.png" alt="drscalp">
+            <img class="client-logo" src="brand/trichomed.png" alt="trichomed">
+            <img class="client-logo" src="brand/covette.png" alt="covette">
+            <img class="client-logo" src="brand/body contour.png" alt="body contour">
+            <img class="client-logo" src="brand/neu3.png" alt="neu3">
+            <img class="client-logo" src="brand/guo tai.png" alt="guo tai">
+            <img class="client-logo" src="brand/natrahea.png" alt="natrahea">
+            <img class="client-logo" src="brand/1royal.png" alt="1royal">
+            <img class="client-logo" src="brand/wellness unicorn.png" alt="wellness unicorn">
+            <img class="client-logo" src="brand/physiomed.png" alt="physiomed">
+            <img class="client-logo" src="brand/private circle.png" alt="private circle">
+            <img class="client-logo" src="brand/33 club.png" alt="33 club">
+        </div>
+    </section>
+
+    <section class="showcase-section" name="Fabulas Showcase">
+        <div class="div-column" style="line-height: 200%; gap: 50px;">
+            <img src="fabulas-splendify.svg" alt="fabulas">
+            <p>
+                SPLENDIFY uses a proven mix of technology and audience data to drive leads and conversions for clients in Singapore and S.E.A.
+                <br>
+                <br>
+                Harnessing cutting-edge audience technology and deep expertise in the Health and Beauty sector, we craft compelling digital campaigns, fostering brand loyalty, and sustainable growth
+            </p>
+        </div>
+        <img class="showcase-image" src="fabulas-showcase.png" alt="">
+    </section>
+
+    <section name="Platform">
+        <h2>We help boost your sales and ROI for your beauty and wellness brand</h2>
+        <div class="platform-grid">
+            <img class="platform-item" src="platform/tiktok.png" alt="" class="tiktok-ss">
+            <img class="platform-item" src="platform/instagram.png" alt="" class="instagram-ss">
+            <img class="platform-item" src="platform/facebook.png" alt="" class="facebook-ss">
+            <img class="platform-item" src="platform/linkedin.png" alt="" class="linkedin-ss">
+            <img class="platform-item" src="platform/xiao hong shu.png" alt="" class="xiao hong shu-ss">
+            <img class="platform-item" src="platform/other.png" alt="" class="other platform">
+        </div>
+    </section>
+
+    <section name="Steps">
+        <h2>5 Simple Steps to start getting 10x Return for your business</h2>
+        <div class="step-wrapper">
+            <div class="step-item">
+                <img src="step/form.svg" alt="" class="step-logo">
+                <p><a class="step-number">Step 1</a>
+                    <br>
+                    Fill out the form</p>
+            </div>
+            <div class="step-item">
+                <img src="step/contact.svg" alt="" class="step-logo">
+                <p><a class="step-number">Step 2</a>
+                    <br>
+                    We will contact you</p>
+            </div>
+            <div class="step-item">
+                <img src="step/discuss.svg" alt="" class="step-logo">
+                <p><a class="step-number">Step 3</a>
+                    <br>
+                    We discuss your needs, goals, budget, duration, and platform</p>
+            </div>
+            <div class="step-item">
+                <img src="step/setup.svg" alt="" class="step-logo">
+                <p><a class="step-number">Step 4</a>
+                    <br>
+                    We setup & launch the campaign for you</p>
+            </div>
+            <div class="step-item">
+                <img src="step/sales.svg" alt="" class="step-logo">
+                <p><a class="step-number">Step 5</a>
+                    <br>
+                    You start receiving leads & sales</p>
+            </div>
+        </div>
+    </section>
+
+    <section name="FAQ">
+        <h2>Frequently Asked Questions</h2>
+        <div class="FAQ-wrapper">
+            
+            <div class="FAQ-question">
+                <p>Do you work with clients from other industry?</p>
+                <img src="plus.svg">
+            </div>
+            <div class="FAQ-answer">
+                <p class="FAQ-title">Do you work with clients from other industry?</p>
+                <p>We specialize in working with clients in the health, beauty and wellness industries. Our expertise allows us to develop tailored digital marketing strategies and audience data learning that effectively reach and engage your target audience.
+                </p>
+            </div>
+
+            <div class="FAQ-question">
+                <p>What services do you offer?</p>
+                <img src="plus.svg">
+            </div>
+            <div class="FAQ-answer">
+                <p class="FAQ-title">What services do you offer?</p>
+                <p>We offer a range of digital marketing services, including SEO, PPC advertising, social media management, content marketing, chatbot implementation, web design and development and more.
+                </p>
+            </div>
+
+            <div class="FAQ-question">
+                <p>What is your pricing structure?</p>
+                <img src="plus.svg">
+            </div>
+            <div class="FAQ-answer">
+                <p class="FAQ-title">What is your pricing structure?</p>
+                <p>Our pricing structure varies based on the services and scope of the project. Please contact us for a personalized quote.
+                </p>
+            </div>
+
+            <div class="FAQ-question">
+                <p>Can you provide case studies or references?</p>
+                <img src="plus.svg">
+            </div>
+            <div class="FAQ-answer">
+                <p class="FAQ-title">Can you provide case studies or references?</p>
+                <p>Yes, we can provide case studies and references when we meet with you. Please contact us to learn more about our previous work and client experiences.
+                </p>
+            </div>
+
+            <div class="FAQ-question">
+                <p>How soon will your consultants contact me?</p>
+                <img src="plus.svg">
+            </div>
+            <div class="FAQ-answer">
+                <p class="FAQ-title">How soon will your consultants contact me?</p>
+                <p>Our consultants will contact you within 24 hours of receiving your inquiry. We strive to respond as quickly as possible to address your needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section name="testimonial">
+        <h2>What they say about Splendify</h2>
+        <div class="testimonial-wrapper">
+            <div class="testimonial-item">
+                <p>John Doe
+                    <br>
+                    Wellness Business Owner</p>
+                <p class="testimonial-text">"As a business owner in the wellness industry, partnering with Splendify has been a game-changer for our spa and traditional medicine services. Their innovative marketing strategies and comprehensive business solutions have significantly increased our client base and revenue. The team's expertise in digital marketing and customer engagement has truly elevated our brand, making us a leading name in the industry. We highly recommend Splendify to any business seeking substantial growth and enhanced market presence."
+                </p>
+            </div>
+            <div class="testimonial-item">
+                <p>Jenifer Stone
+                    <br>
+                    JS Beauty</p>
+                <p class="testimonial-text">"Splendify's exceptional services have transformed our traditional medicine and wellness business. Their tailored approach to digital marketing and strategic planning has not only improved our online visibility but also attracted a more diverse clientele. The professionalism and dedication of the Splendify team are unmatched, consistently delivering outstanding results. Thanks to Splendify, our business has seen remarkable growth and continues to thrive in a competitive market."
+                </p>
+            </div>
+            <div class="testimonial-item">
+                <p>Thomas Ericson
+                    <br>
+                    Wellness Corp.</p>
+                <p class="testimonial-text">"Working with Splendify has been an incredible experience for our spa and wellness center. Their deep understanding of the industry and commitment to excellence have helped us achieve unprecedented growth. From enhancing our digital presence to optimizing our operational processes, Splendify has provided invaluable support every step of the way. Our client satisfaction has soared, and we are now positioned as a top choice in the wellness and traditional medicine sector. Splendify is the partner every business owner dreams of."
+                </p>
+            </div>
+        </div>
+    </section>
+    <section name="form" style="gap: 25px; background: var(--gradientPrimary, linear-gradient(112deg, #35C0A7 28.6%, #5BD9BB 100%)); color: white;">
+        <h2>Yes, I want to get up to 12X* return for my business!
+        </h2>
+        <p class="subtitle-form" style="text-align: center;"">
+            SPLENDIFY has helped more than 250 Beauty & Wellness Clients in Singapore.
+            Fill up the form and let us help you get more customers</p>
+        <form action="">
+            <div class="input-wrapper">
+                <div class="div-input">
+                    <p>Name</p>
+                    <input type="text" name="name" placeholder="Enter your name">
+                </div>
+                <div class="div-input">
+                    <p>Email</p>
+                    <input type="text" name="email" placeholder="Enter your work or personal email">
+                </div>
+                <div class="div-input">
+                    <p>Company</p>
+                    <input type="text" name="email" placeholder="Enter your company name">
+                </div>
+                <div class="div-input">
+                    <p>Phone</p>
+                    <input type="text" name="email" placeholder="Enter your work or phone number">
+                </div>
+            </div>
+            <div class="div-row">
+                <input type="checkbox" name="agree">
+                <p>I agree to be contacted by Splendify either by email or phone</p>
+            </div>
+            </form>
+        <button>Yes, help me get 10x return for my business</button>
+    </section>
+</body>
+</html>
