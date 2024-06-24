@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+  </head>
+  <body style="font-family: sans-serif;">
+    <form 
+    action="" 
+    class="form"
+    style="
+        display: flex;
+        flex-direction: column;
+        gap: 5px;">
+        <div class="div-input"
+            style="
+                display: flex;
+                flex-direction: column;
+                gap: 0px;
+            ">
+            <a>My biggest pain point is</a>
+            <select name="option" placeholder="Choose one option" required
+                    style="
+                    margin-top: 5px;
+                    padding: 10px 15px;
+                    border: 0px;
+                    background-color: #fafafa;
+                    border-radius: 50px;
+                    ">
+                <option value="Want to generate more customer leads">Want to generate more customer leads</option>
+                <option value="Problem setting appointments and converting to show-ups">Problem setting appointments and converting to show-ups</option>
+                <option value="Want to create engaging social media post and video">Want to create engaging social media post and video</option>
+                <option value="Need help with other digital marketing services">Need help with other digital marketing services</option>
+                <option value="Has existing agency but looking to change">Has existing agency but looking to change</option>
+            </select>
+        </div>
+      <div class="input-wrapper" style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;">
+        <div class="div-input" style="
+            display: flex;
+            flex-direction: column;
+            gap: 0px;">
+          <a>Name</a>
+          <input
+            required
+            class="input-form"
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            style="
+                margin-top: 5px;
+                padding: 10px 15px;
+                border: 0px;
+                background-color: #fafafa;
+                border-radius: 50px;
+          "/>
+        </div>
+
+        <div class="div-input" style="
+            display: flex;
+            flex-direction: column;
+            gap: 0px;">
+          <a>Work Email</a>
+          <input
+            required
+            class="input-form"
+            type="text"
+            name="email"
+            placeholder="Enter your email"
+            style="
+            margin-top: 5px;
+            padding: 10px 15px;
+            border: 0px;
+            background-color: #fafafa;
+            border-radius: 50px;
+          "/>
+        </div>
+        <div class="div-input" style="
+            display: flex;
+            flex-direction: column;
+            gap: 0px">
+          <a>Company</a>
+          <input
+            required
+            class="input-form"
+            type="text"
+            name="company"
+            placeholder="Enter your company name"
+            style="
+            margin-top: 5px;
+            padding: 10px 15px;
+            border: 0px;
+            background-color: #fafafa;
+            border-radius: 50px;
+          "/>
+        </div>
+
+        <div class="div-input" style="
+            display: flex;
+            flex-direction: column;
+            gap: 0px;">
+          <a>Phone</a>
+          <input
+            required
+            class="input-form"
+            type="text"
+            name="phone"
+            placeholder="eg. +65123456"
+            style="
+            margin-top: 5px;
+            padding: 10px 15px;
+            border: 0px;
+            background-color: #fafafa;
+            border-radius: 50px;
+          "/>
+        </div>
+      </div>
+    </form>
+
+    <button
+      class="button-form"
+      onclick="window.location.href = 'mailto:fristiawanto.eko15@gmail.com?body='+encodeURIComponent('Hi Splendify, I am interested in your services. My name is '+document.querySelector('input[name=\'name\']').value+' and I work at '+document.querySelector('input[name=\'company\']').value+'. My phone number is '+document.querySelector('input[name=\'phone\']').value+'. My email address is '+document.querySelector('input[name=\'email\']').value)"
+      style="padding: 10px 20px;
+            border-radius: 50px;
+            border: 0;
+            background-color: #08bc89;
+            color: white;
+      ">
+      Help me get 12x return for my business
+    </button>
+  </body>
+</html>
