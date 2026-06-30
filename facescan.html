@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Image Transition</title>
+    <style>
+        body {
+            margin: 0;
+            height: 600vh; 
+            background: #000;
+        }
+
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0;
+            will-change: opacity;
+        }
+
+        #img1 {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        #img2 {
+            z-index: 2;
+        }
+
+        #img3 {
+            z-index: 3;
+        }
+
+        .light {
+            position: absolute;
+            width: 169px;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            background: linear-gradient(90deg, rgba(0, 215, 176, 0) 0%, #00D7B0 100%);
+            z-index: 10;
+            transform: translateX(-200px); 
+            will-change: transform;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-wrapper" id="imgWrapper">
+            <img id="img1" src="face-eye-open.png" alt="Eye Open">
+            <img id="img2" src="face-eye-half-close.png" alt="Eye Half Close">
+            <img id="img3" src="face-eye-close.png" alt="Eye Close">
+        </div>
+        <div class="light" id="lightWipe"></div>
+    </div>
+
+    <script>
+        function mapRange(value, inMin, inMax, outMin, outMax) {
+            if (value < inMin) return outMin;
+            if (value > inMax) return outMax;
+            return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            const scrollFraction = scrollTop / maxScroll;
+
+            const img2 = document.getElementById('img2');
+            const img3 = document.getElementById('img3');
+            const imgWrapper = document.getElementById('imgWrapper');
+            const lightWipe = document.getElementById('lightWipe');
+            const windowWidth = window.innerWidth;
+
+            // 1. Logika Opacity Img2 (Half Close)
+            let img2Opacity = 0;
+            if (scrollFraction <= 0.2) img2Opacity = mapRange(scrollFraction, 0, 0.2, 0, 1);
+            else if (scrollFraction <= 0.8) img2Opacity = 1;
+            else img2Opacity = mapRange(scrollFraction, 0.8, 1.0, 1, 0);
+            img2.style.opacity = img2Opacity;
+
+            // 2. Logika Opacity Img3 (Close)
+            let img3Opacity = 0;
+            if (scrollFraction <= 0.2) img3Opacity = 0;
+            else if (scrollFraction <= 0.4) img3Opacity = mapRange(scrollFraction, 0.2, 0.4, 0, 1);
+            else if (scrollFraction <= 0.6) img3Opacity = 1;
+            else if (scrollFraction <= 0.8) img3Opacity = mapRange(scrollFraction, 0.6, 0.8, 1, 0);
+            else img3Opacity = 0;
+            img3.style.opacity = img3Opacity;
+
+            // 3. Logika Zoom (Scale) & Vertical Translate
+            let scale = 1;
+            let translateY = 0;
+            
+            // Ubah nilai maxTranslateY (dalam satuan vh). Gunakan nilai negatif jika wajah perlu digeser ke atas.
+            const maxTranslateY = 10; 
+
+            if (scrollFraction <= 0.2) {
+                scale = mapRange(scrollFraction, 0, 0.2, 1, 1.1);
+                translateY = mapRange(scrollFraction, 0, 0.2, 0, maxTranslateY * 0.2);
+            }
+            else if (scrollFraction <= 0.4) {
+                scale = mapRange(scrollFraction, 0.2, 0.4, 1.1, 1.5);
+                translateY = mapRange(scrollFraction, 0.2, 0.4, maxTranslateY * 0.2, maxTranslateY);
+            }
+            else if (scrollFraction <= 0.6) {
+                scale = 1.5;
+                translateY = maxTranslateY;
+            }
+            else if (scrollFraction <= 0.8) {
+                scale = mapRange(scrollFraction, 0.6, 0.8, 1.5, 1.1);
+                translateY = mapRange(scrollFraction, 0.6, 0.8, maxTranslateY, maxTranslateY * 0.2);
+            }
+            else {
+                scale = mapRange(scrollFraction, 0.8, 1.0, 1.1, 1);
+                translateY = mapRange(scrollFraction, 0.8, 1.0, maxTranslateY * 0.2, 0);
+            }
+            
+            imgWrapper.style.transform = `scale(${scale}) translateY(${translateY}vh)`;
+
+            // 4. Logika Wiping Light
+            let lightX = -200; 
+            if (scrollFraction >= 0.4 && scrollFraction <= 0.6) {
+                lightX = mapRange(scrollFraction, 0.4, 0.6, -200, windowWidth + 200);
+            } else if (scrollFraction > 0.6) {
+                lightX = windowWidth + 200;
+            }
+            lightWipe.style.transform = `translateX(${lightX}px)`;
+        });
+    </script>
+</body>
+
+</html>

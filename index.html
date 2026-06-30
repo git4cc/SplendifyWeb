@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
 </head>
 
 <style>
@@ -26,7 +27,8 @@
         font-family: 'Roboto', sans-serif;
         display: flex;
         flex-direction: column;
-        gap: 50px;
+        gap: 20px;
+        background: #fafafa;
     }
 
     h1 {
@@ -42,9 +44,23 @@
         line-height: 150%;
         font-weight: 300;
     }
+
+    section {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: #ffffff;
+    }
+    @media screen and (min-width: 800px) {
+        section {
+            max-width: 1000px;
+        }
+    }
 </style>
 
 <body>
+    <img src="linebg.svg" alt="background" id="background"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.5;">
     <header>
         <img src="splendify.svg" alt="splendify" class="header-logo">
         <style>
@@ -73,8 +89,8 @@
                 justify-content: start;
                 text-align: left;
                 gap: 50px;
-                max-width: 800px;
                 margin: 0 auto;
+                background: none;
             }
 
             .subtitle {
@@ -84,18 +100,22 @@
             }
         </style>
     </section>
-    <div id="ascii-embed">
+    <section id="ascii-embed">
         <iframe src="ASCII/index.html" frameborder="0" scrolling="no" id="ascii-embed" allowfullscreen width="100%"
             height="100%"></iframe>
         <!-- <div class="gradient"></div> -->
         <style>
             #ascii-embed {
                 margin: 0;
-                width: 100vw;
-                height: 100vh;
+                width: 95%;
+                height: auto;
+                aspect-ratio: 16/9;
                 position: relative;
                 z-index: -1;
                 overflow: hidden;
+                background: #fff;
+                margin: 0 auto;
+                border-radius: 20px;
             }
 
             #ascii-embed iframe {
@@ -115,8 +135,190 @@
 
             }
         </style>
-    </div>
+    </section>
+    <h2 style="
+            font-size: 17px;
+            line-height: 20px;
+            letter-spacing: 1em;
+            color: #000000;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 50px 0;
+        ">Products</h2>
+    <!-- <section id="product">
+        <div class="product-cell">
+            <img src="aiagent.svg" alt="product" class="product-image">
+            <p class="product-title">Conversion Tech® AI Agent</p>
+            <p class="product-description">Recommend best services and products</p>
+        </div>
+        <div class="product-cell">
+            <img src="aiskin.svg" alt="product" class="product-image">
+            <p class="product-title">AI Skin Analysis</p>
+            <p class="product-description">analyze skin problems using phone camera</p>
+        </div>
+        <div class="product-cell">
+            <img src="fabulas.svg" alt="product" class="product-image">
+            <p class="product-title">Wellness Platform</p>
+            <p class="product-description">to book services and buy wellness products</p>
+        </div>
+        <style>
+            #product {
+                display: flex;
+                flex-direction: row;
+                margin: 0 auto;
+                max-width: 800px;
+            }
+
+            .product-cell {
+                text-align: left;
+                border: 0.5px solid #e0e0e0;
+                padding: 40px;
+                gap: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                background-color: #ffffff;
+                aspect-ratio: 1/1;
+
+                /* 1. Tambahan untuk efek mengapung yang smooth */
+                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            }
+
+            .product-cell:hover {
+                transform: translateY(-8px);
+                /* Mengangkat kotak ke atas 8px */
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                /* Memberikan bayangan halus */
+                border-color: transparent;
+                /* Hilangkan border biar makin clean pas ngapung */
+            }
+
+            .product-title {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 150%;
+            }
+
+            .product-description {
+                font-size: 14px;
+                color: #666;
+                line-height: 150%;
+            }
+
+            .product-image {
+                height: 32px;
+            }
+        </style>
+    </section> -->
+    <section id="explanation">
+        <div class="explanation-cell">
+            <div class="column-left">
+                <p class="label">PRODUCT</p>
+                <p class="explanation-title">Conversion Tech® AI Agent</p>
+                <p class="explanation-description">Digital concierge for brand to help customers book appointment,
+                    following-up them, and manage customer relation as well</p>
+            </div>
+            <div class="column-right">
+                <video src="aiagent.mp4" autoplay muted loop class="explanation-image"></video>
+            </div>
+        </div>
+        <div class="explanation-cell">
+            <div class="column-right">
+                <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
+            </div>
+            <div class="column-left">
+                <p class="label">PRODUCT</p>
+                <p class="explanation-title">AI Skin Analysis</p>
+                <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
+                    phone/tablet/computer’s camera</p>
+            </div>
+        </div>
+        <div class="explanation-cell">
+            <div class="column-left">
+                <p class="label">PRODUCT</p>
+                <p class="explanation-title">Platform for consumers to book their wellness services and buy products</p>
+                <p class="explanation-description">It also allows merchants to list their brands and services for brand
+                    visibility</p>
+            </div>
+            <div class="column-right">
+                <img src="fabulasmockup.png" alt="product" class="explanation-image">
+            </div>
+        </div>
+        <style>
+            #explanation {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .explanation-cell {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                /* PENTING: Ganti max-width jadi width agar ukurannya dikunci/gak mengecil */
+                pointer-events: none;
+                background-color: #ffffff;
+                transition: opacity 0.2s ease, visibility 0.2s ease;
+            }
+
+            .explanation-cell.active {
+                opacity: 1;
+            }
+
+            .explanation-title {
+                font-size: 20px;
+                line-height: 150%;
+            }
+
+            .explanation-description {
+                font-size: 16px;
+                color: #666;
+                line-height: 150%;
+            }
+
+            .column-left {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: center;
+                flex-grow: 1;
+                padding: 50px;
+            }
+
+            .label {
+                font-weight: 400;
+                font-size: 10px;
+                letter-spacing: 0.5em;
+                color: #000000;
+
+            }
+
+            .column-right {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: center;
+                flex-grow: 1;
+                max-width: 400px;
+                aspect-ratio: 1/1;
+            }
+
+            .column-right img,
+            .column-right video, 
+            .column-right iframe {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px;
+            }
+        </style>
+    </section>
     <section id="clients">
+        <h2 style="text-align: center; font-weight: 300; font-size: 20px; letter-spacing: 15%; text-transform: uppercase;">Splendify has been <b>trusted</b> by more than 250
+            clients </h2>
         <div class="clients-track">
 
             <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
@@ -154,18 +356,58 @@
             <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
 
         </div>
+        <div class="testimonials">
+            <div class="testimonial-cell">
+                <img src="quote.svg" alt="quote" class="quote-icon">
+                <p class="testimonial-text">
+                    As a healthcare provider, we must adhere to stringent marketing and advertising regulations set by
+                    the Ministry of Health. The team at Splendify collaborates with us to gain a deep understanding of
+                    our services, offering clear guidance while ensuring compliance with these guidelines. Splendify is
+                    very well verse with the Do and Don’t in Singapore’s medical sector.
+                </p>
+                <img src="brand/covette.png" alt="" class="testimonial-sender">
+            </div>
+            <div class="testimonial-cell">
+                <img src="quote.svg" alt="quote" class="quote-icon">
+                <p class="testimonial-text">
+                    The chiropractic market is highly competitive, but Splendify’s “Conversion Tech” solution has helped
+                    us increase our ROI by more than 8X. The team takes the time to really understand our business
+                    before embarking on any project, ensuring their strategies are perfectly aligned with our goals.
+                </p>
+                <img src="brand/natrahea.png" alt="" class="testimonial-sender">
+            </div>
+            <div class="testimonial-cell">
+                <img src="quote.svg" alt="quote" class="quote-icon">
+                <p class="testimonial-text">
+                    We have partnered with numerous agencies over the years, but Splendify truly sets itself apart.
+                    Utilizing AI and their proprietary “Conversion Tech” solution, they not only drive leads but also
+                    manage appointment setting and ensure customer show-ups for our beauty and aesthetics services.
+                </p>
+                <img src="brand/drhaach.png" alt="" class="testimonial-sender">
+            </div>
+            <div class="testimonial-cell">
+                <img src="quote.svg" alt="quote" class="quote-icon">
+                <p class="testimonial-text">
+                    In Singapore’s competitive spa and body care industry, attracting new customers is crucial.
+                    The Splendify team has been instrumental and creative in our success by leveraging various
+                    solutions, including engaging social media posts on platforms like Xiao Hong Shu and TikTok.
+                </p>
+                <img src="brand/fil.png" alt="" class="testimonial-sender">
+            </div>
+        </div>
 
         <style>
             #clients {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 50px 0;
+                gap: 20px;
                 width: 100vw;
-                padding: 20px 0;
                 /* Hapus padding kiri-kanan biar nggak nabrak saat looping */
                 overflow: hidden;
                 /* Sembunyikan gambar yang keluar dari layar & ilangin scrollbar */
-                filter: grayscale(100%);
                 box-sizing: border-box;
-                background: #fff;
-                /* Tambahin warna background sesuai tema lo biar rapi */
             }
 
             .clients-track {
@@ -177,6 +419,7 @@
                 /* Wajib pakai ini biar panjangnya menyesuaikan isi */
                 animation: scroll-left 30s linear infinite;
                 /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
+                filter: grayscale(100%);
             }
 
             .client-logo img {
@@ -198,200 +441,42 @@
                     /* -20px adalah kompensasi dari setengah gap */
                 }
             }
-        </style>
-    </section>
-    <h2 style="text-align: center;">Products</h2>
-    <section id="product">
-        <div class="product-cell">
-            <img src="fabulas.svg" alt="product" class="product-image">
-            <p class="product-title">Wellness Platform</p>
-            <p class="product-description">to book services and buy wellness products</p>
-        </div>
-        <div class="product-cell">
-            <img src="aiskin.svg" alt="product" class="product-image">
-            <p class="product-title">AI Skin Analysis</p>
-            <p class="product-description">analyze skin problems using phone camera</p>
-        </div>
-        <div class="product-cell">
-            <img src="aiagent.svg" alt="product" class="product-image">
-            <p class="product-title">AI Agent</p>
-            <p class="product-description">Recommend best services and products</p>
-        </div>
-        <style>
-            #product {
+
+            .testimonials {
                 display: flex;
                 flex-direction: row;
-                margin: 0 auto;
-                max-width: 800px;
-            }
-
-            .product-cell {
-                text-align: left;
-                border: 0.5px solid #e0e0e0;
-                padding: 40px;
-                height: 100%;
-                gap: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: start;
-                background-color: #ffffff;
-
-                /* 1. Tambahan untuk efek mengapung yang smooth */
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            }
-
-            .product-cell:hover {
-                transform: translateY(-8px);
-                /* Mengangkat kotak ke atas 8px */
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-                /* Memberikan bayangan halus */
-                border-color: transparent;
-                /* Hilangkan border biar makin clean pas ngapung */
-            }
-
-            .product-title {
-                font-weight: bold;
-                font-size: 16px;
-                line-height: 100%;
-            }
-
-            .product-description {
-                font-size: 16px;
-                color: #666;
-                line-height: 150%;
-            }
-
-            .product-image {
-                height: 32px;
-            }
-        </style>
-    </section>
-    <section id="explanation">
-        <div class="explanation-cell">
-            <div class="column-left">
-                <p class="explanation-title">Platform for consumers to book their wellness services and buy products</p>
-                <p class="explanation-description">It also allows merchants to list their brands and services for brand
-                    visibility</p>
-            </div>
-            <div class="column-right">
-                <img src="fabulasmockup.png" alt="product" class="explanation-image">
-            </div>
-        </div>
-        <div class="explanation-cell">
-            <div class="column-left">
-                <p class="explanation-title">AI Skin Analysis</p>
-                <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
-                    phone/tablet/computer’s camera</p>
-            </div>
-            <div class="column-right">
-                <img src="faceascii.png" alt="faceascii" class="explanation-image">
-            </div>
-        </div>
-        <div class="explanation-cell">
-            <div class="column-left">
-                <p class="explanation-title">AI Agent</p>
-                <p class="explanation-description">Recommend best services and products through various channels</p>
-            </div>
-            <div class="column-right">
-                <video src="aiagent.mp4" autoplay muted loop class="explanation-image"></video>
-            </div>
-        </div>
-        <style>
-            .explanation-cell {
-                display: flex;
-                flex-direction: row;
-                width: 600px;
-                /* PENTING: Ganti max-width jadi width agar ukurannya dikunci/gak mengecil */
-                gap: 50px;
-                border: 0.5px solid #e0e0e0;
-
-                position: fixed;
-                z-index: 9999;
-                pointer-events: none;
-                opacity: 0;
-                visibility: hidden;
-                background-color: #ffffff;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-
-                transition: opacity 0.2s ease, visibility 0.2s ease;
-            }
-
-            .explanation-cell.active {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .explanation-title {
-                font-weight: bold;
-                font-size: 20px;
-                line-height: 150%;
-            }
-
-            .explanation-description {
-                font-size: 14px;
-                color: #666;
-                line-height: 150%;
-            }
-
-            .column-left {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                justify-content: center;
-                flex-grow: 1;
-                padding: 50px;
-            }
-
-            .column-right {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                justify-content: center;
-                flex-grow: 1;
-                max-width: 300px;
-                aspect-ratio: 1/1;
-            }
-
-            .column-right img,
-            .column-right video {
+                padding: 0px 50px;
+                gap: 5px;
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
+                order: 2;
+                flex-grow: 0;
+                overflow-x: scroll;
+            }
+
+            .testimonial-cell {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px 20px;
+                gap: 20px;
+                min-width: 300px;
+                height: 400px;
+                background: #F4F4F4;
+                flex-grow: 0;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+                line-height: 150%;
+            }
+
+            .testimonial-sender {
+                height: 80px;
+                flex: none;
+                order: 1;
+                flex-grow: 0;
             }
         </style>
-        <script>
-            // Ambil semua elemen product dan explanation
-            const products = document.querySelectorAll('.product-cell');
-            const explanations = document.querySelectorAll('.explanation-cell');
-
-            // Looping setiap produk
-            products.forEach((product, index) => {
-                // Cocokkan produk dengan explanation berdasarkan urutannya (index)
-                const explanation = explanations[index];
-
-                // 1. Saat cursor masuk ke area produk
-                product.addEventListener('mouseenter', () => {
-                    explanation.classList.add('active');
-                });
-
-                // 2. Saat cursor bergerak di dalam area produk
-                product.addEventListener('mousemove', (e) => {
-                    // Kasih jarak (offset) antara cursor dan ujung box explanation biar nggak nutupin panah mouse
-                    const offsetX = 20;
-                    const offsetY = 20;
-
-                    // Update posisi top dan left sesuai koordinat cursor saat itu (clientX dan clientY)
-                    explanation.style.left = `${e.clientX + offsetX}px`;
-                    explanation.style.top = `${e.clientY + offsetY}px`;
-                });
-
-                // 3. Saat cursor keluar dari area produk
-                product.addEventListener('mouseleave', () => {
-                    explanation.classList.remove('active');
-                });
-            });
-        </script>
     </section>
     <section id="contact">
         <h2>Ready to implement Splendify AI?</h2>
@@ -402,7 +487,6 @@
             #contact {
                 padding: 100px 50px;
                 text-align: center;
-                max-width: 800px;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
@@ -452,9 +536,10 @@
                 text-align: left;
                 display: flex;
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: start;
                 padding: 50px;
+                background: none;
             }
 
             .footer-logo {
