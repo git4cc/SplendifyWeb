@@ -1,0 +1,16 @@
+<svg width="320" height="479" viewBox="0 0 320 479" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2190_2892)">
+<rect opacity="0.3" x="65.7539" y="160.387" width="90.8917" height="90.8917" transform="rotate(45 65.7539 160.387)" stroke="black" stroke-width="0.547945"/>
+<rect opacity="0.3" x="158.904" y="253.538" width="90.8917" height="90.8917" transform="rotate(45 158.904 253.538)" stroke="black" stroke-width="0.547945"/>
+<rect opacity="0.5" x="65.7539" y="348.881" width="90.8917" height="90.8917" transform="rotate(45 65.7539 348.881)" stroke="black" stroke-width="0.547945"/>
+<rect opacity="0.3" x="254.246" y="160.387" width="90.8917" height="90.8917" transform="rotate(45 254.246 160.387)" stroke="black" stroke-width="0.547945"/>
+<rect opacity="0.5" x="254.246" y="348.881" width="90.8917" height="90.8917" transform="rotate(45 254.246 348.881)" stroke="black" stroke-width="0.547945"/>
+<rect opacity="0.2" x="94.5201" y="253.425" width="130.411" height="130.411" stroke="black" stroke-width="0.54795"/>
+<rect opacity="0.2" x="160" y="159.292" width="225.726" height="225.726" transform="rotate(45 160 159.292)" stroke="black" stroke-width="0.547945"/>
+</g>
+<defs>
+<clipPath id="clip0_2190_2892">
+<rect width="320" height="478.904" fill="white"/>
+</clipPath>
+</defs>
+</svg>

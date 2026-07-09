@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Animation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            background-color: white;
+            background-image: url('lines.jpg');
+            background-size: 150%;
+            background-repeat: no-repeat;
+            background-position: center top;
+            width: 100svw;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Spacer untuk mendorong chat pertama ke bawah layar */
+        .spacer {
+            flex-grow: 1;
+        }
+
+        /* Animasi Bouncy Scale */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .chat-left,
+        .chat-right {
+            display: none;
+            /* Sembunyikan elemen secara menyeluruh di awal */
+            margin: 0;
+            opacity: 0;
+        }
+
+        .chat-left.show {
+            display: block;
+            background-color: #dedede;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 60%;
+            align-self: flex-start;
+            transform-origin: bottom left;
+            animation: bounceIn 0.8s cubic-bezier(0.25, 0.5, 0.25, 1.5) forwards;
+        }
+
+        .chat-right.show {
+            display: block;
+            background-color: #007963;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 60%;
+            align-self: flex-end;
+            transform-origin: bottom right;
+            animation: bounceIn 0.8s cubic-bezier(0.25, 0.5, 0.25, 1.5) forwards;
+        }
+
+        ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="header">
+        <img class="header-logo" src="aiagent.svg" alt="splendify" class="header-logo">
+        <p>Splendify AI</p>
+        <style>
+            .header {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-align: left;
+                padding: 0px 20px;
+                background: linear-gradient(111.83deg, #229983 28.6%, #5BD9BB 100%);
+                color: white;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 100;
+                font-size: 20px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .header-logo {
+                height: 40px;
+                filter: invert(100%);
+            }
+        </style>
+    </div> -->
+    <div class="chat-container">
+        <div class="spacer"></div>
+
+        <p class="chat-right">Hi Splendify</p>
+        <p class="chat-left">Hi! I'm Splendify AI, would you like to try a promotional hair treatment for $200</p>
+        <p class="chat-right">I want to book an appointment</p>
+        <p class="chat-left">Great! Have you ever visited to our outlet in the past year?</p>
+        <p class="chat-right">No</p>
+        <p class="chat-left">Are you a Singapore resident?</p>
+        <p class="chat-right">No</p>
+        <p class="chat-left">How old are you?</p>
+        <p class="chat-right">35</p>
+        <div class="chat-left">These are the outlets you can choose from
+            <ol>
+                <li>Orchard Outlet</li>
+                <li>Marina Outlet</li>
+                <li>Jurong Outlet</li>
+            </ol>
+        </div>
+        <p class="chat-right">Orchard</p>
+        <p class="chat-left">Could you please specify a preferred date and time for your session at Orchard Outlet? The
+            available times are 10am to 8pm hourly.</p>
+        <p class="chat-right">10 June, 1pm</p>
+        <p class="chat-left">Great! Your preferred time slot is available. Thank you for successfully reserving an
+            appointment with Splendify.</p>
+    </div>
+
+    <script>
+        const chats = document.querySelectorAll('.chat-left, .chat-right');
+        const delay = 2000; // Jeda antar chat
+
+        chats.forEach((chat, index) => {
+            setTimeout(() => {
+                // Menambahkan class show untuk memicu kemunculan elemen dan animasi
+                chat.classList.add('show');
+
+                // Scroll otomatis ke bagian bawah layar setiap kali chat baru muncul
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, index * delay);
+        });
+
+        // Reload halaman setelah chat terakhir muncul
+        const totalDuration = (chats.length * delay) + 5000; // +5 detik agar chat terakhir terlihat sebelum reload
+        setTimeout(() => {
+            location.reload();
+        }, totalDuration);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Tech® AI Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    p {
+        margin: 0;
+    }
+
+    body {
+        font-family: 'Roboto';
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        width: 100svw;
+        background: #fafafa;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="menu-bar" id="products-menu-bar">
+            <p class="menu title">Products</p>
+            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
+            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
+            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
+        </div>
+        <img src="splendify.svg" alt="splendify" id="header-logo">
+        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
+            <p class="menu title">PAGES</p>
+            <a class="menu" id="menu-about">About Splendify</a>
+            <a class="menu" id="menu-privacy">Privacy Policy</a>
+        </div>
+        <style>
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+                justify-content: space-between;
+                width: 100%;
+                padding: 25px 50px;
+                box-sizing: border-box; /* Mencegah overflow horizontal */
+                z-index: 100;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.5);
+                width: fit-content;
+                height: fit-content;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 100px;
+                padding: 10px 20px;
+                letter-spacing: 1px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                color: #000;
+            }
+
+            .menu:hover {
+                background-color: rgba(255, 255, 255, 1);
+                font-weight: 600;
+            }
+
+            .menu p {
+                margin: 0;
+            }
+
+            .title {
+                display: flex;
+            }
+
+            .menu-bar {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header-logo {
+                padding: 10px 20px;
+                background: white;
+                border-radius: 100px;
+                height: 40px;
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        </style>
+        <script>
+            const productsMenuBar = document.getElementById('products-menu-bar');
+            const pagesMenuBar = document.getElementById('pages-menu-bar');
+            const headerLogo = document.getElementById('header-logo');
+
+            productsMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-skin').style.display = 'flex';
+                document.getElementById('menu-agent').style.display = 'flex';
+                document.getElementById('menu-platform').style.display = 'flex';
+            });
+
+            productsMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-skin').style.display = 'none';
+                document.getElementById('menu-agent').style.display = 'none';
+                document.getElementById('menu-platform').style.display = 'none';
+            });
+
+            pagesMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-about').style.display = 'flex';
+                document.getElementById('menu-privacy').style.display = 'flex';
+            });
+
+            pagesMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-about').style.display = 'none';
+                document.getElementById('menu-privacy').style.display = 'none';
+            }); 
+
+            headerLogo.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        </script>
+    </header>
+    <section id="hero">
+        <div id="hero-text">
+            <h1>Conversion Tech® AI Agent</h1>
+            <p>AI Agent is a powerful tool that can help you convert more leads into customers. It can answer questions,
+                provide information, and even schedule appointments.</p>
+        </div>
+        <style>
+            #hero {
+                width: 100%;
+                height: 100svh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 50px 25%;
+                background-image: url(lines.jpg);
+                background-size: 100% 80%;
+                background-repeat: no-repeat;
+                background-position: center top;
+                text-align: center;
+            }
+
+            #hero h1 {
+                font-size: 64px;
+                font-weight: 300;
+            }
+
+            #hero p {
+                font-size: 24px;
+                font-weight: 300;
+            }
+        </style>
+    </section>
+    <section class="explanation">
+        <div class="explanation-intro">
+            <p class="intro-label">Digital Concierge</p>
+            <h2 class="intro-title">Handle each customer responsively and personalized</h2>
+            <p class="explanation-description">Conversion Tech® AI Agent will help businesses by responding chat from
+                customer and follow-up customer’s interest</p>
+        </div>
+        <div class="slider">
+            <div class="slider-cell">
+                <img src="leads.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Automate your leads to customer within 2 minutes</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="appointment.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Set customer appointment automatically</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="followup.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Stop losing customer leads due to poor follow-up by staff</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .explanation {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                width: 100svw;
+                overflow: hidden;
+                padding-bottom: 50px;
+            }
+
+            .explanation-intro {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 20px 15%;
+            }
+
+            .intro-label {
+                font-weight: 400;
+                font-size: 12px;
+                letter-spacing: 15%;
+                color: #000000;
+                text-transform: uppercase;
+            }
+
+            .intro-title {
+                font-size: 48px;
+                line-height: 125%;
+                font-weight: 300;
+            }
+
+            .explanation-description {
+                padding-top: 15px;
+                font-size: 20px;
+                color: #666;
+                line-height: 150%;
+                font-weight: 300;
+            }
+
+            .slider {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+                width: 100%;
+                overflow-x: scroll;
+                padding: 0 15%;
+            }
+
+            .slider-cell {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .slider-text-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 0px 20px;
+            }
+
+            .slider-text {
+                width: 100%;
+                font-size: 15px;
+                line-height: 150%;
+                color: #666;
+            }
+
+            .slider-image {
+                aspect-ratio: 1/1;
+                max-height: 300px;
+            }
+        </style>
+    </section>
+    <section id="labels">
+        <h2>Conversion Tech® AI Agent is customized for</h2>
+        <div class="labels-track">
+            <div class="labels-wrap">
+                <p class="label">Services</p>
+                <p class="label">Beauty and Wellness</p>
+                <p class="label">Home Cleaning</p>
+                <p class="label">F&B</p>
+                <p class="label">Hair Salons</p>
+                <p class="label">Aesthetics</p>
+                <p class="label">Plastic Surgery Clinics</p>
+                <p class="label">Chiropractors</p>
+                <p class="label">Physiotherapists</p>
+                <p class="label">Gyms</p>
+                <p class="label">Yoga & Fitness Studio</p>
+                <p class="label">TCM Clinics</p>
+                <p class="label">Medical</p>
+                <p class="label">Supplement Company</p>
+            </div>
+            <div class="labels-wrap">
+                <p class="label">Services</p>
+                <p class="label">Beauty and Wellness</p>
+                <p class="label">Home Cleaning</p>
+                <p class="label">F&B</p>
+                <p class="label">Hair Salons</p>
+                <p class="label">Aesthetics</p>
+                <p class="label">Plastic Surgery Clinics</p>
+                <p class="label">Chiropractors</p>
+                <p class="label">Physiotherapists</p>
+                <p class="label">Gyms</p>
+                <p class="label">Yoga & Fitness Studio</p>
+                <p class="label">TCM Clinics</p>
+                <p class="label">Medical</p>
+                <p class="label">Supplement Company</p>
+            </div>
+        </div>
+        <style>
+            #labels {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                /* Padding 15% dipindah ke sini agar pinggirannya rapi */
+                padding: 100px 15%;
+                width: 100svw;
+                overflow: hidden;
+            }
+
+            #labels h2 {
+                font-size: 32px;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            /* Class baru untuk membungkus dan menggerakkan label */
+            .labels-track {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                /* Wajib pakai ini biar panjangnya menyesuaikan isi */
+                animation: scroll-left 20s linear infinite;
+                /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
+                filter: grayscale(100%);
+                animation-delay: 500ms;
+            }
+
+            .labels-wrap {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            /* Opsional: Animasi berhenti saat di-hover / disentuh */
+            .labels-track:hover {
+                animation-play-state: paused;
+            }
+
+            .label {
+                width: fit-content;
+                height: fit-content;
+                text-wrap: nowrap;
+                padding: 10px 20px;
+                background-color: #f4f4f4;
+                border-radius: 100px;
+                font-size: 16px;
+                color: #666;
+            }
+
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    /* Geser 50% dari total panjang konten dikurangi setengah dari gap (10px / 2) */
+                    transform: translateX(calc(-50% - 5px));
+                }
+            }
+        </style>
+    </section>
+    <section class="explanation">
+        <div class="explanation-intro">
+            <p class="intro-label">Other Powers</p>
+            <h2 class="intro-title">Truly intelligent. Your business AI Agent</h2>
+            <p class="explanation-description">Conversion Tech® AI Agent will also help businesses to manage customers and increase the ROI</p>
+        </div>
+        <div class="slider">
+            <div class="slider-cell">
+                <div class="slider-box">
+                    <p class="box-text">Increase marketing ROI up to</p>
+                    <p class="box-number">12X</p>
+                </div>
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <div class="slider-box">
+                    <p class="box-text">Efficient Registration</p>
+                    <p class="box-number">85%</p>
+                </div>
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Reduce manual registration by up to 85%</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <div class="slider-box">
+                    <p class="box-text">CRM</p>
+                    <p class="box-number">AUTO SYNC</p>
+                </div>
+                <div class="slider-text-wrap">
+                    <p class="slider-text">All customer details will be sync automatically into your CRM</p>
+                </div>
+            </div>
+            <style>
+                .slider-cell {
+                    width: 100%;
+                }
+                .slider-box {
+                    aspect-ratio: 1/1;
+                    width: 100%;
+                    background-color: #F4F4F4;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: space-between;
+                    padding: 30px;
+                }
+
+                .box-text {
+                    font-weight: 300;
+                    font-size: 20px;
+                    line-height: 150%;
+                    color: #646464;
+                }
+
+                .box-number {
+                    font-style: italic;
+                    font-weight: 900;
+                    font-size: 50px;
+                    background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-fill-color: transparent;
+
+                }
+            </style>
+        </div>
+    </section>
+    <section id="contact">
+        <video src="aiagent.mp4" autoplay loop muted></video>
+        <div class="contact-text">
+            <h2>Ready to implement Splendify AI?</h2>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our personalized AI technology</p>
+            <button class="contact-button">Book Free Consultation</button>
+        </div>
+        <style>
+            #contact {
+                display: flex;
+                flex-direction: row;
+                gap: 0px;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                background: white;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            #contact video {
+                aspect-ratio: 1/1;
+                width: 100%;
+                max-width: 500px;
+                filter: brightness(150%);
+            }
+
+            .contact-text {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                text-align: left;
+                width: 100%;
+                max-width: 50vw;
+                padding: 50px;
+            }
+            .contact-text p {
+                line-height: 150%;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .contact-text h2 {
+                font-size: 48px;
+                font-weight: 300;
+                line-height: 150%;
+            }
+
+            .contact-button {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 20px;
+                gap: 8px;
+                width: fit-content;
+                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                border-radius: 96px;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                border: none;
+            }
+
+            .contact-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </section>
+    <section id="footer">
+        <img src="splendify.svg" alt="splendify" class="footer-logo">
+        <div id="footer-menus">
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Products</p>
+                <p class="footer-menu">Fabulas</p>
+                <p class="footer-menu">AI Agent</p>
+                <p class="footer-menu">AI Skin Analysis</p>
+            </div>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">More</p>
+                <p class="footer-menu">About Splendify</p>
+                <p class="footer-menu">Privacy Policy</p>
+            </div>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Socials</p>
+                <p class="footer-menu">LinkedIn</p>
+                <p class="footer-menu">Email</p>
+            </div>
+        </div>
+        <style>
+            #footer {
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: start;
+                padding: 10%;
+                width: 100%;
+                background-color: white;
+                position: relative;
+                z-index: 10;
+            }
+
+            .footer-logo {
+                max-width: 200px;
+                margin-bottom: 20px;
+            }
+
+            #footer-menus {
+                display: flex;
+                flex-direction: row;
+                gap: 50px;
+            }
+
+            .footer-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-menu {
+                color: #00000080;
+                margin: 0;
+                font-size: 12px;
+            }
+
+            .footer-menu-title {
+                font-size: 12px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

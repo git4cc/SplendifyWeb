@@ -24,11 +24,12 @@
 
     body {
         margin: 0;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto';
         display: flex;
         flex-direction: column;
         gap: 20px;
         background: #fafafa;
+        overflow-x: hidden;
     }
 
     h1 {
@@ -44,66 +45,240 @@
         line-height: 150%;
         font-weight: 300;
     }
-
-    section {
-        width: 100%;
-        margin: 0 auto;
-        border-radius: 20px;
-        background-color: #ffffff;
-    }
-    @media screen and (min-width: 800px) {
-        section {
-            max-width: 1000px;
-        }
-    }
 </style>
 
 <body>
-    <img src="linebg.svg" alt="background" id="background"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.5;">
+    <img src="linebg.svg" alt="background" id="background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.8;">
     <header>
-        <img src="splendify.svg" alt="splendify" class="header-logo">
+        <div class="menu-bar" id="products-menu-bar">
+            <p class="menu title">Products</p>
+            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
+            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
+            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
+        </div>
+        <img src="splendify.svg" alt="splendify" id="header-logo">
+        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
+            <p class="menu title">PAGES</p>
+            <a class="menu" id="menu-about">About Splendify</a>
+            <a class="menu" id="menu-privacy">Privacy Policy</a>
+        </div>
         <style>
             header {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                padding: 50px 0px;
-            }
-
-            .header-logo {
-                height: 32px;
-            }
-        </style>
-    </header>
-    <section id="hero">
-        <h1>A harmony of wellness, beauty and technology in the most innovative way possible.</h1>
-        <p class="subtitle">Start delivering sophisticated experience to your customer and increase efficiency by
-            implementing personalized AI technology</p>
-        <style>
-            #hero {
+                position: fixed;
+                top: 0;
+                left: 0;
                 display: flex;
                 flex-direction: row;
                 align-items: start;
+                justify-content: space-between;
+                width: 100%;
+                padding: 25px 50px;
+                box-sizing: border-box; /* Mencegah overflow horizontal */
+                z-index: 100;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.5);
+                width: fit-content;
+                height: fit-content;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 100px;
+                padding: 10px 20px;
+                letter-spacing: 1px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                color: #000;
+            }
+
+            .menu:hover {
+                background-color: rgba(255, 255, 255, 1);
+                font-weight: 600;
+            }
+
+            .menu p {
+                margin: 0;
+            }
+
+            .title {
+                display: flex;
+            }
+
+            .menu-bar {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header-logo {
+                padding: 10px 20px;
+                background: white;
+                border-radius: 100px;
+                height: 40px;
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        </style>
+        <script>
+            const productsMenuBar = document.getElementById('products-menu-bar');
+            const pagesMenuBar = document.getElementById('pages-menu-bar');
+            const headerLogo = document.getElementById('header-logo');
+
+            productsMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-skin').style.display = 'flex';
+                document.getElementById('menu-agent').style.display = 'flex';
+                document.getElementById('menu-platform').style.display = 'flex';
+            });
+
+            productsMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-skin').style.display = 'none';
+                document.getElementById('menu-agent').style.display = 'none';
+                document.getElementById('menu-platform').style.display = 'none';
+            });
+
+            pagesMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-about').style.display = 'flex';
+                document.getElementById('menu-privacy').style.display = 'flex';
+            });
+
+            pagesMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-about').style.display = 'none';
+                document.getElementById('menu-privacy').style.display = 'none';
+            }); 
+
+            headerLogo.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        </script>
+    </header>
+    <div id="hero">
+        <div class="subtitle">
+            <h1>A harmony of wellness, <br> beauty, and technology <br> in the most innovative <br> way possible.</h1>
+            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by implementing personalized AI technology</p>
+        </div>
+        <style>
+            #hero {
+                width: 100svw;
+                height: 100svh;
+                padding: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
                 justify-content: start;
-                text-align: left;
-                gap: 50px;
                 margin: 0 auto;
-                background: none;
+                background: url('fractal.jpg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: top;
+                text-align: center;
             }
 
             .subtitle {
-                font-size: 18px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 80%;
+                text-align: center;
+                margin: auto auto;
+                font-weight: 300;
+            }
+            .subtitle h1 {
+                font-size: 64px;
                 line-height: 150%;
-                margin-top: 10px;
+                font-weight: 200;
+            }
+            .subtitle  p {
+                font-size: 32px;
+                line-height: 150%;
             }
         </style>
-    </section>
-    <section id="ascii-embed">
+    </div>
+    <div class="clients-track">
+        <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+        <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+        <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+        <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+        <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+        <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+        <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+        <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+        <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+        <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+        <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+        <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+        <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+        <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+        <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+        <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+
+        <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+        <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+        <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+        <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+        <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+        <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+        <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+        <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+        <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+        <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+        <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+        <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+        <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+        <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+        <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+        <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+
+        <style>
+            .clients-track {
+                display: flex;
+                align-items: center;
+                gap: 40px;
+                margin-left: 30%;
+                /* Jarak antar logo */
+                width: max-content;
+                /* Wajib pakai ini biar panjangnya menyesuaikan isi */
+                animation: scroll-left 30s linear infinite;
+                /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
+                filter: grayscale(100%);
+                animation-delay: 500ms;
+            }
+
+            .client-logo img {
+                max-width: 200px;
+                max-height: 150px;
+                object-fit: contain;
+                /* Biar rasio gambar nggak gepeng */
+            }
+
+            /* Animasi Kunci dari Kanan ke Kiri */
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    /* Geser persis setengah dari total panjang track (sebanyak set pertama) */
+                    transform: translateX(calc(-50% - 20px));
+                    /* -20px adalah kompensasi dari setengah gap */
+                }
+            }
+        </style>
+    </div>
+    <!-- <section id="ascii-embed">
         <iframe src="ASCII/index.html" frameborder="0" scrolling="no" id="ascii-embed" allowfullscreen width="100%"
             height="100%"></iframe>
-        <!-- <div class="gradient"></div> -->
+         <div class="gradient"></div>
         <style>
             #ascii-embed {
                 margin: 0;
@@ -126,8 +301,6 @@
             }
 
             .gradient {
-                /* Rectangle 6 */
-
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -135,16 +308,7 @@
 
             }
         </style>
-    </section>
-    <h2 style="
-            font-size: 17px;
-            line-height: 20px;
-            letter-spacing: 1em;
-            color: #000000;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 50px 0;
-        ">Products</h2>
+    </section>  -->
     <!-- <section id="product">
         <div class="product-cell">
             <img src="aiagent.svg" alt="product" class="product-image">
@@ -211,81 +375,124 @@
             }
         </style>
     </section> -->
-    <section id="explanation">
+    <p class="quote">We bridge the precision of technology <br> with the poetry of self-care.</p>
+    <style>
+        .quote {
+            padding: 200px 100px;
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 150%;
+            text-align: center;
+            background: linear-gradient(133.31deg, #35C0A7 -3.05%, #20595E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+
+        }
+    </style>
+    <div id="explanation">
         <div class="explanation-cell">
-            <div class="column-left">
-                <p class="label">PRODUCT</p>
-                <p class="explanation-title">Conversion Tech® AI Agent</p>
-                <p class="explanation-description">Digital concierge for brand to help customers book appointment,
-                    following-up them, and manage customer relation as well</p>
+            <div class="explanation-quote" style="background-color: #CFF0F4; background-image: url('matrix.svg');">
+                <p>Through our AI skin analysis, we gently read the unique canvas of people's living beauty</p>
             </div>
-            <div class="column-right">
-                <video src="aiagent.mp4" autoplay muted loop class="explanation-image"></video>
-            </div>
-        </div>
-        <div class="explanation-cell">
-            <div class="column-right">
+            <div class="column">
                 <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
-            </div>
-            <div class="column-left">
-                <p class="label">PRODUCT</p>
-                <p class="explanation-title">AI Skin Analysis</p>
-                <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
-                    phone/tablet/computer’s camera</p>
+                <div class="explanation-product">
+                    <p class="label">PRODUCT</p>
+                    <p class="explanation-title">AI Skin Analysis</p>
+                    <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
+                        phone/tablet/computer's camera</p>
+                </div>
             </div>
         </div>
         <div class="explanation-cell">
-            <div class="column-left">
-                <p class="label">PRODUCT</p>
-                <p class="explanation-title">Platform for consumers to book their wellness services and buy products</p>
-                <p class="explanation-description">It also allows merchants to list their brands and services for brand
-                    visibility</p>
+            <div class="column">
+                <iframe src="chat.html" class="scaled-frame" scrolling="no"></iframe>
+                <div class="explanation-product">
+                    <p class="label">PRODUCT</p>
+                    <p class="explanation-title">Conversion Tech® AI Agent</p>
+                    <p class="explanation-description">Digital concierge for brand to help customers book appointment,
+                        following-up them, and manage customer relation as well</p>
+                </div>
             </div>
-            <div class="column-right">
+            <div class="explanation-quote" style="background-color: #CCF1E8; background-image: url('radial.svg');">
+                <p>While our intuitive AI Agent serves as a mindful guide for your customer journey</p>
+            </div>
+        </div>
+        <div class="explanation-cell">
+            <div class="explanation-quote" style="background-color: #C0D0D0; background-image: url('diamond.svg');">
+                <p>Together, they open the doors to a curated wellness platform</p>
+            </div>
+            <div class="column">
                 <img src="fabulasmockup.png" alt="product" class="explanation-image">
+                <div class="explanation-product">
+                    <p class="label">PRODUCT</p>
+                    <p class="explanation-title">Platform for consumers to book their wellness services and buy products
+                    </p>
+                    <p class="explanation-description">It also allows merchants to list their brands and services for
+                        brand visibility</p>
+                </div>
             </div>
         </div>
         <style>
             #explanation {
                 display: flex;
                 flex-direction: column;
-                gap: 50px;
                 margin: 0 auto;
-                padding: 20px;
             }
 
             .explanation-cell {
                 display: flex;
                 flex-direction: row;
                 width: 100%;
-                /* PENTING: Ganti max-width jadi width agar ukurannya dikunci/gak mengecil */
-                pointer-events: none;
-                background-color: #ffffff;
                 transition: opacity 0.2s ease, visibility 0.2s ease;
+                align-items: stretch;
             }
 
-            .explanation-cell.active {
-                opacity: 1;
+            .explanation-quote {
+                padding: 100px;
+                min-width: 60%;
+                width: 100%;
+                height: 100svh;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center bottom;
+            }
+
+            .explanation-quote p {
+                font-size: 42px;
+                font-weight: 300;
+                line-height: 150%;
+                background: linear-gradient(133.31deg, #13404A -3.05%, #10788E 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+
+            .explanation-product {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                flex-grow: 1;
+                gap: 10px;
+                padding: 50px;
             }
 
             .explanation-title {
-                font-size: 20px;
+                font-size: 32px;
                 line-height: 150%;
             }
 
             .explanation-description {
-                font-size: 16px;
+                font-size: 24px;
                 color: #666;
                 line-height: 150%;
-            }
-
-            .column-left {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                justify-content: center;
-                flex-grow: 1;
-                padding: 50px;
             }
 
             .label {
@@ -296,66 +503,37 @@
 
             }
 
-            .column-right {
+            .column {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
                 justify-content: center;
                 flex-grow: 1;
-                max-width: 400px;
-                aspect-ratio: 1/1;
+                width: 100%;
+                min-width: 40%;
+                height: 90svh;
             }
 
-            .column-right img,
-            .column-right video, 
-            .column-right iframe {
+            .scaled-frame {
+                min-height: 400px;
+                /* Perbesar ukuran asli sebelum diskala */
+                height: 200%;
+                /* Perkecil rasio (100 / 150 = 0.66) */
+                transform-origin: top left;
+                /* Pusatkan pengecilan dari kiri atas */
+                border: none;
+            }
+
+            .column img,
+            .column video,
+            .column iframe {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                border-radius: 20px;
             }
         </style>
-    </section>
+    </div>
     <section id="clients">
-        <h2 style="text-align: center; font-weight: 300; font-size: 20px; letter-spacing: 15%; text-transform: uppercase;">Splendify has been <b>trusted</b> by more than 250
-            clients </h2>
-        <div class="clients-track">
-
-            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-
-            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-
-        </div>
+        <h2 style="text-align: center; font-weight: 300; font-size: 48px;">Splendify has been <b>trusted</b> by more than 250 clients </h2>
         <div class="testimonials">
             <div class="testimonial-cell">
                 <img src="quote.svg" alt="quote" class="quote-icon">
@@ -401,45 +579,14 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 50px 0;
-                gap: 20px;
+                padding: 10%;
+                gap: 50px;
                 width: 100vw;
                 /* Hapus padding kiri-kanan biar nggak nabrak saat looping */
                 overflow: hidden;
                 /* Sembunyikan gambar yang keluar dari layar & ilangin scrollbar */
                 box-sizing: border-box;
-            }
-
-            .clients-track {
-                display: flex;
-                align-items: center;
-                gap: 40px;
-                /* Jarak antar logo */
-                width: max-content;
-                /* Wajib pakai ini biar panjangnya menyesuaikan isi */
-                animation: scroll-left 30s linear infinite;
-                /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
-                filter: grayscale(100%);
-            }
-
-            .client-logo img {
-                max-width: 150px;
-                max-height: 100px;
-                object-fit: contain;
-                /* Biar rasio gambar nggak gepeng */
-            }
-
-            /* Animasi Kunci dari Kanan ke Kiri */
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    /* Geser persis setengah dari total panjang track (sebanyak set pertama) */
-                    transform: translateX(calc(-50% - 20px));
-                    /* -20px adalah kompensasi dari setengah gap */
-                }
+                margin: 0 auto;
             }
 
             .testimonials {
@@ -479,20 +626,51 @@
         </style>
     </section>
     <section id="contact">
-        <h2>Ready to implement Splendify AI?</h2>
-        <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
-            personalized AI technology</p>
-        <button class="contact-button">Contact Us</button>
+        <div class="contact-text">
+            <h2>Ready to implement Splendify AI?</h2>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our personalized AI technology</p>
+            <button class="contact-button">Book Free Consultation</button>
+        </div>
         <style>
             #contact {
-                padding: 100px 50px;
-                text-align: center;
+                display: flex;
+                flex-direction: row;
+                gap: 0px;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                background: white;
+                width: 100%;
                 margin: 0 auto;
+            }
+
+            #contact video {
+                aspect-ratio: 1/1;
+                width: 100%;
+                max-width: 500px;
+                filter: brightness(150%);
+            }
+
+            .contact-text {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
-                line-height: 150%;
                 align-items: center;
+                gap: 20px;
+                width: 100%;
+                max-width: 50vw;
+                padding: 50px;
+                text-align: center;
+            }
+            .contact-text p {
+                line-height: 150%;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .contact-text h2 {
+                font-size: 48px;
+                font-weight: 300;
+                line-height: 150%;
             }
 
             .contact-button {
@@ -500,7 +678,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                padding: 20px 30px;
+                padding: 10px 20px;
                 gap: 8px;
                 width: fit-content;
                 background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
@@ -518,17 +696,22 @@
     </section>
     <section id="footer">
         <img src="splendify.svg" alt="splendify" class="footer-logo">
-        <div id="menus">
-            <div class="menu-list">
-                <p class="menu-title">Products</p>
-                <p class="menu">Fabulas</p>
-                <p class="menu">AI Agent</p>
-                <p class="menu">AI Skin Analysis</p>
+        <div id="footer-menus">
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Products</p>
+                <p class="footer-menu">Fabulas</p>
+                <p class="footer-menu">AI Agent</p>
+                <p class="footer-menu">AI Skin Analysis</p>
             </div>
-            <div class="menu-list">
-                <p class="menu-title">Socials</p>
-                <p class="menu">LinkedIn</p>
-                <p class="menu">Email</p>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">More</p>
+                <p class="footer-menu">About Splendify</p>
+                <p class="footer-menu">Privacy Policy</p>
+            </div>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Socials</p>
+                <p class="footer-menu">LinkedIn</p>
+                <p class="footer-menu">Email</p>
             </div>
         </div>
         <style>
@@ -538,8 +721,11 @@
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: start;
-                padding: 50px;
-                background: none;
+                padding: 10%;
+                width: 100%;
+                background-color: white;
+                position: relative;
+                z-index: 10;
             }
 
             .footer-logo {
@@ -547,26 +733,28 @@
                 margin-bottom: 20px;
             }
 
-            #menus {
+            #footer-menus {
                 display: flex;
                 flex-direction: row;
                 gap: 50px;
             }
 
-            .menu-list {
+            .footer-menu-list {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
             }
 
-            .menu-list p {
+            .footer-menu {
+                color: #00000080;
                 margin: 0;
-                font-size: 14px;
+                font-size: 12px;
             }
 
-            .menu-title {
-                font-weight: bold;
-                margin-bottom: 10px;
+            .footer-menu-title {
+                font-size: 12px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
             }
         </style>
     </section>
