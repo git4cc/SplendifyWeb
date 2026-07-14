@@ -44,7 +44,7 @@
         <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
             <p class="menu title">PAGES</p>
             <a class="menu" id="menu-about">About Splendify</a>
-            <a class="menu" id="menu-privacy">Privacy Policy</a>
+            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
         </div>
         <style>
             header {
@@ -155,7 +155,7 @@
         <style>
             #hero {
                 width: 100%;
-                height: 100svh;
+                height: 80svh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -181,112 +181,89 @@
     </section>
     <section class="explanation">
         <div class="explanation-intro">
-            <p class="intro-label">Digital Concierge</p>
-            <h2 class="intro-title">Handle each customer responsively and personalized</h2>
-            <p class="explanation-description">Conversion Tech® AI Agent will help businesses by responding chat from
-                customer and follow-up customer’s interest</p>
+            <p class="intro-label">Benefits</p>
+            <h2 class="intro-title">Truly intelligent. A business AI Agent</h2>
+            <p class="explanation-description">Conversion Tech® AI Agent will help businesses to manage customers and increase the ROI</p>
         </div>
         <div class="slider">
             <div class="slider-cell">
-                <img src="leads.jpg" alt="" class="slider-image">
+                <div class="slider-box">
+                    <p class="box-text">Increase marketing ROI up to</p>
+                    <p class="box-number">12x</p>
+                </div>
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Automate your leads to customer within 2 minutes</p>
+                    <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
                 </div>
             </div>
             <div class="slider-cell">
-                <img src="appointment.jpg" alt="" class="slider-image">
+                <div class="slider-box">
+                    <p class="box-text">Efficient Registration</p>
+                    <p class="box-number">85%</p>
+                </div>
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Set customer appointment automatically</p>
+                    <p class="slider-text">Reduce manual registration by up to 85%</p>
                 </div>
             </div>
             <div class="slider-cell">
-                <img src="followup.jpg" alt="" class="slider-image">
+                <div class="slider-box">
+                    <p class="box-text">CRM</p>
+                    <p class="box-number">AUTO SYNC</p>
+                </div>
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Stop losing customer leads due to poor follow-up by staff</p>
+                    <p class="slider-text">All customer details will be sync automatically into your CRM</p>
                 </div>
             </div>
+            <div class="slider-cell">
+                <div class="slider-box">
+                    <p class="box-text">Conversion from Leads to Customer</p>
+                    <p class="box-number">25%</p>
+                </div>
+                <div class="slider-text-wrap">
+                    <p class="slider-text">Increase in conversion from leads to customer better than human's conversion</p>
+                </div>
+            </div>
+            <style>
+                .slider-cell {
+                    width: 100%;
+                }
+                .slider-box {
+                    aspect-ratio: 1/1;
+                    width: 100%;
+                    background-color: #F4F4F4;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: space-between;
+                    padding: 30px;
+                }
+
+                .box-text {
+                    font-weight: 300;
+                    font-size: 20px;
+                    line-height: 150%;
+                    color: #646464;
+                }
+
+                .box-number {
+                    font-style: italic;
+                    font-weight: 900;
+                    font-size: 50px;
+                    background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-fill-color: transparent;
+
+                }
+            </style>
         </div>
-        <style>
-            .explanation {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 30px;
-                width: 100svw;
-                overflow: hidden;
-                padding-bottom: 50px;
-            }
-
-            .explanation-intro {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 20px 15%;
-            }
-
-            .intro-label {
-                font-weight: 400;
-                font-size: 12px;
-                letter-spacing: 15%;
-                color: #000000;
-                text-transform: uppercase;
-            }
-
-            .intro-title {
-                font-size: 48px;
-                line-height: 125%;
-                font-weight: 300;
-            }
-
-            .explanation-description {
-                padding-top: 15px;
-                font-size: 20px;
-                color: #666;
-                line-height: 150%;
-                font-weight: 300;
-            }
-
-            .slider {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 20px;
-                width: 100%;
-                overflow-x: scroll;
-                padding: 0 15%;
-            }
-
-            .slider-cell {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .slider-text-wrap {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 0px 20px;
-            }
-
-            .slider-text {
-                width: 100%;
-                font-size: 15px;
-                line-height: 150%;
-                color: #666;
-            }
-
-            .slider-image {
-                aspect-ratio: 1/1;
-                max-height: 300px;
-            }
-        </style>
     </section>
     <section id="labels">
         <h2>Conversion Tech® AI Agent is customized for</h2>
         <div class="labels-track">
             <div class="labels-wrap">
-                <p class="label">Services</p>
+                <p class="label">Retail Services</p>
                 <p class="label">Beauty and Wellness</p>
                 <p class="label">Home Cleaning</p>
                 <p class="label">F&B</p>
@@ -383,74 +360,106 @@
     </section>
     <section class="explanation">
         <div class="explanation-intro">
-            <p class="intro-label">Other Powers</p>
-            <h2 class="intro-title">Truly intelligent. Your business AI Agent</h2>
-            <p class="explanation-description">Conversion Tech® AI Agent will also help businesses to manage customers and increase the ROI</p>
+            <p class="intro-label">Digital Concierge</p>
+            <h2 class="intro-title">Handle each customer responsively and personalized</h2>
+            <p class="explanation-description">Conversion Tech® AI Agent will also help businesses by responding chat from
+                customer and follow-up customer’s interest</p>
         </div>
         <div class="slider">
             <div class="slider-cell">
-                <div class="slider-box">
-                    <p class="box-text">Increase marketing ROI up to</p>
-                    <p class="box-number">12X</p>
-                </div>
+                <img src="leads.jpg" alt="" class="slider-image">
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
+                    <p class="slider-text">Convert your leads to customer within 2 minutes</p>
                 </div>
             </div>
             <div class="slider-cell">
-                <div class="slider-box">
-                    <p class="box-text">Efficient Registration</p>
-                    <p class="box-number">85%</p>
-                </div>
+                <img src="appointment.jpg" alt="" class="slider-image">
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Reduce manual registration by up to 85%</p>
+                    <p class="slider-text">Confirm customer appointment automatically</p>
                 </div>
             </div>
             <div class="slider-cell">
-                <div class="slider-box">
-                    <p class="box-text">CRM</p>
-                    <p class="box-number">AUTO SYNC</p>
-                </div>
+                <img src="followup.jpg" alt="" class="slider-image">
                 <div class="slider-text-wrap">
-                    <p class="slider-text">All customer details will be sync automatically into your CRM</p>
+                    <p class="slider-text">Avoid losing leads & customer due to poor follow-up</p>
                 </div>
             </div>
-            <style>
-                .slider-cell {
-                    width: 100%;
-                }
-                .slider-box {
-                    aspect-ratio: 1/1;
-                    width: 100%;
-                    background-color: #F4F4F4;
-                    border-radius: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: start;
-                    justify-content: space-between;
-                    padding: 30px;
-                }
-
-                .box-text {
-                    font-weight: 300;
-                    font-size: 20px;
-                    line-height: 150%;
-                    color: #646464;
-                }
-
-                .box-number {
-                    font-style: italic;
-                    font-weight: 900;
-                    font-size: 50px;
-                    background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                    text-fill-color: transparent;
-
-                }
-            </style>
         </div>
+        <style>
+            .explanation {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                width: 100svw;
+                overflow: hidden;
+                padding-bottom: 50px;
+            }
+
+            .explanation-intro {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 20px 15%;
+            }
+
+            .intro-label {
+                font-weight: 400;
+                font-size: 12px;
+                letter-spacing: 15%;
+                color: #000000;
+                text-transform: uppercase;
+            }
+
+            .intro-title {
+                font-size: 48px;
+                line-height: 125%;
+                font-weight: 300;
+            }
+
+            .explanation-description {
+                padding-top: 15px;
+                font-size: 20px;
+                color: #666;
+                line-height: 150%;
+                font-weight: 300;
+            }
+
+            .slider {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+                width: 100%;
+                overflow-x: scroll;
+                padding: 0 15%;
+            }
+
+            .slider-cell {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .slider-text-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 0px 20px;
+            }
+
+            .slider-text {
+                width: 100%;
+                font-size: 15px;
+                line-height: 150%;
+                color: #666;
+            }
+
+            .slider-image {
+                aspect-ratio: 1/1;
+                max-height: 300px;
+            }
+        </style>
     </section>
     <section id="contact">
         <video src="aiagent.mp4" autoplay loop muted></video>
@@ -526,14 +535,14 @@
         <div id="footer-menus">
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Products</p>
-                <p class="footer-menu">Fabulas</p>
-                <p class="footer-menu">AI Agent</p>
-                <p class="footer-menu">AI Skin Analysis</p>
+                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">More</p>
-                <p class="footer-menu">About Splendify</p>
-                <p class="footer-menu">Privacy Policy</p>
+                <a class="footer-menu">About Splendify</a>
+                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Socials</p>
@@ -553,6 +562,7 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
+                
             }
 
             .footer-logo {
@@ -576,6 +586,7 @@
                 color: #00000080;
                 margin: 0;
                 font-size: 12px;
+                text-decoration: none;
             }
 
             .footer-menu-title {

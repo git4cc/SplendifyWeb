@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,404 @@
         rel="stylesheet">
     <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    p {
+        margin: 0;
+    }
+
+    body {
+        font-family: 'Roboto';
+        margin: 0;
+        padding: 0;
+        width: 100svw;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
 <body>
+    <header>
+        <div class="menu-bar" id="products-menu-bar">
+            <p class="menu title">Products</p>
+            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
+            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
+            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
+        </div>
+        <img src="splendify.svg" alt="splendify" id="header-logo">
+        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
+            <p class="menu title">PAGES</p>
+            <a class="menu" id="menu-about">About Splendify</a>
+            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <style>
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+                justify-content: space-between;
+                width: 100%;
+                padding: 25px 50px;
+                box-sizing: border-box; /* Mencegah overflow horizontal */
+                z-index: 100;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.5);
+                width: fit-content;
+                height: fit-content;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 100px;
+                padding: 10px 20px;
+                letter-spacing: 1px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                color: #000;
+            }
+
+            .menu:hover {
+                background-color: rgba(255, 255, 255, 1);
+                font-weight: 600;
+            }
+
+            .menu p {
+                margin: 0;
+            }
+
+            .title {
+                display: flex;
+            }
+
+            .menu-bar {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header-logo {
+                padding: 10px 20px;
+                background: white;
+                border-radius: 100px;
+                height: 40px;
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        </style>
+        <script>
+            const productsMenuBar = document.getElementById('products-menu-bar');
+            const pagesMenuBar = document.getElementById('pages-menu-bar');
+            const headerLogo = document.getElementById('header-logo');
+
+            productsMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-skin').style.display = 'flex';
+                document.getElementById('menu-agent').style.display = 'flex';
+                document.getElementById('menu-platform').style.display = 'flex';
+            });
+
+            productsMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-skin').style.display = 'none';
+                document.getElementById('menu-agent').style.display = 'none';
+                document.getElementById('menu-platform').style.display = 'none';
+            });
+
+            pagesMenuBar.addEventListener('mouseenter', () => {
+                document.getElementById('menu-about').style.display = 'flex';
+                document.getElementById('menu-privacy').style.display = 'flex';
+            });
+
+            pagesMenuBar.addEventListener('mouseleave', () => {
+                document.getElementById('menu-about').style.display = 'none';
+                document.getElementById('menu-privacy').style.display = 'none';
+            }); 
+
+            headerLogo.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        </script>
+    </header>
     
+    <section id="hero">
+        <div id="hero-text">
+            <img src="fabulas-star.svg" alt="" id="fabulas-star">
+            <h1>Fabulas</h1>
+            <p>Our cutting-edge platform designed to revolutionize people's wellness journey</p>
+        </div>
+        <img src="fabulas-screens.png" alt="" id="screens">
+        <img src="white-gradient.svg" alt="white gradient">
+        <style>
+            #hero {
+                display: flex;
+                flex-direction: column;
+                gap: 10%;
+                text-align: center;
+                width: 100svw;
+                height: 150svh;
+                background-image: url(gradient.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                padding-top: 10%;
+            }
+
+            #hero-text {
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                padding: 100px;
+                min-height: 50svh;
+                gap: 20px;
+            }
+
+            #hero-text h1 {
+                font-size: 64px;
+                font-weight: 100;
+                line-height: 150%;
+            }
+
+            #hero-text p {
+                font-size: 20px;
+                font-weight: 300;
+                line-height: 150%;
+            }
+
+            #fabulas-star {
+                height: 300px;
+            }
+
+            #screens {
+                scale: 1.5;
+                transform: translateX(25%) translateY(0%);
+                z-index: 2;
+            }
+
+            #white-background {
+                height: 10svh;
+                width: 100svw;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+            }
+        </style>
+        <script>
+    const screens = document.getElementById('screens');
+
+    window.onload = () => {
+        // Atur posisi awal di kanan dan tambahkan efek transisi
+        screens.style.transition = 'transform 20s linear';
+        screens.style.transform = 'translateX(%) translateY(0%)';
+
+        // Berikan delay 1 detik sebelum bergerak ke kiri (posisi 0%)
+        setTimeout(() => {
+            screens.style.transform = 'translateX(-25%) translateY(0%)';
+        }, 1000);
+    }
+</script>
+    </section>
+    <section id="quote">
+        <p>Explore a world where science and beauty converge seamlessly, empowering people to discover their wellness
+        </p>
+        <style>
+            #quote {
+                width: 100svw;
+                padding: 15%;
+
+            }
+            #quote p {
+                font-size: 36px;
+                font-weight: 300;
+                text-align: center;
+                background: linear-gradient(133.31deg, #35C0A7 -3.05%, #20595E 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+        </style>
+    </section>
+    <section id="explanation">
+        <div class="explanation-cell">
+            <div class="cell-box" style="background-color: #ABF1DD;"><p>With Fabulas, they gain access to  comprehensive skin analysis, personalized treatments, and a curated  selection of top-notch beauty products and services, all at the fingertips</p></div>
+            <img src="fabulas.png" alt="" class="cell-image">
+        </div>
+        <div class="explanation-cell">
+            <img src="erp.png" alt="" class="cell-image">
+            <div class="cell-box" style="background-color: #BFDDF7;"><p>Harnessing cutting-edge audience technology and deep expertise in the  Health & Beauty sector, we craft compelling digital campaigns,  fostering brand loyalty, and sustainable growth</p></div>
+        </div>
+        <style>
+            #explanation {
+                display: flex;
+                flex-direction: column;
+            }
+            .explanation-cell {
+                display: flex;
+                flex-direction: row;
+            }
+            .cell-box {
+                width: 50%;
+                padding: 10%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                font-size: 28px;
+                line-height: 150%;
+            }
+            .cell-box p {
+                opacity: 0.5;
+            }
+            .cell-image {
+                width: 50%;
+                background-size: 100% 100%;
+            }
+        </style>
+    </section>
+    <section id="contact">
+        <div id="contact-text">
+            <h2>Build your own platform and start getting more happy customer</h2>
+            <p>Start delivering sophisticated experience to your customer by implementing our personalized technology</p>
+            <button>Book Free Consultation</button>
+        </div>
+        <div id="contact-img"></div>
+        <style>
+            #contact {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding: 15%;
+            }
+            #contact-text {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 10%;
+            }
+            #contact-text h2 {
+                font-size: 36px;
+                font-weight: 300;
+                line-height: 150%;
+            } #contact-text p {
+                font-size: 16px;
+                line-height: 150%;
+            }
+            #contact-img {
+                width: 50%;
+                aspect-ratio: 1/1;
+                background-image: url(Mockup.png);
+                background-position: top;
+                background-size: 70%;
+                background-repeat: no-repeat;
+            }
+            #contact-text button {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 20px;
+                gap: 8px;
+                width: fit-content;
+                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                border-radius: 96px;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                border: none;
+            }
+        </style>
+    </section>
+    
+    <section id="footer">
+        <img src="splendify.svg" alt="splendify" class="footer-logo">
+        <div id="footer-menus">
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Products</p>
+                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
+            </div>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">More</p>
+                <a class="footer-menu">About Splendify</a>
+                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-menu-list">
+                <p class="footer-menu-title">Socials</p>
+                <p class="footer-menu">LinkedIn</p>
+                <p class="footer-menu">Email</p>
+            </div>
+        </div>
+        <style>
+            #footer {
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: start;
+                padding: 10%;
+                width: 100%;
+                background-color: white;
+                position: relative;
+                z-index: 10;
+                
+            }
+
+            .footer-logo {
+                max-width: 200px;
+                margin-bottom: 20px;
+            }
+
+            #footer-menus {
+                display: flex;
+                flex-direction: row;
+                gap: 50px;
+            }
+
+            .footer-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-menu {
+                color: #00000080;
+                margin: 0;
+                font-size: 12px;
+                text-decoration: none;
+            }
+
+            .footer-menu-title {
+                font-size: 12px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
+            }
+        </style>
+    </section>
 </body>
+
 </html>

@@ -111,7 +111,7 @@
         <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
             <p class="menu title">PAGES</p>
             <a class="menu" id="menu-about">About Splendify</a>
-            <a class="menu" id="menu-privacy">Privacy Policy</a>
+            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
         </div>
         <style>
             header {
@@ -629,7 +629,7 @@
             const light = document.getElementById('lightWipe');
             if (scroll > 0.3 && scroll < 0.45) {
                 light.style.opacity = 1;
-                light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 300)}px)`;
+                light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 600)}px)`;
             } else {
                 light.style.opacity = 0;
             }
@@ -656,14 +656,14 @@
         <div id="footer-menus">
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Products</p>
-                <p class="footer-menu">Fabulas</p>
-                <p class="footer-menu">AI Agent</p>
-                <p class="footer-menu">AI Skin Analysis</p>
+                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">More</p>
-                <p class="footer-menu">About Splendify</p>
-                <p class="footer-menu">Privacy Policy</p>
+                <a class="footer-menu">About Splendify</a>
+                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Socials</p>
@@ -683,6 +683,7 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
+                
             }
 
             .footer-logo {
@@ -706,6 +707,7 @@
                 color: #00000080;
                 margin: 0;
                 font-size: 12px;
+                text-decoration: none;
             }
 
             .footer-menu-title {
