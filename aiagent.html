@@ -29,6 +29,7 @@
         line-height: 1.5;
         width: 100svw;
         background: #fafafa;
+        overflow-x: hidden;
     }
 </style>
 
@@ -57,7 +58,8 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 25px 50px;
-                box-sizing: border-box; /* Mencegah overflow horizontal */
+                box-sizing: border-box;
+                /* Mencegah overflow horizontal */
                 z-index: 100;
             }
 
@@ -139,7 +141,7 @@
             pagesMenuBar.addEventListener('mouseleave', () => {
                 document.getElementById('menu-about').style.display = 'none';
                 document.getElementById('menu-privacy').style.display = 'none';
-            }); 
+            });
 
             headerLogo.addEventListener('click', () => {
                 window.location.href = 'index.html';
@@ -183,13 +185,17 @@
         <div class="explanation-intro">
             <p class="intro-label">Benefits</p>
             <h2 class="intro-title">Truly intelligent. A business AI Agent</h2>
-            <p class="explanation-description">Conversion Tech® AI Agent will help businesses to manage customers and increase the ROI</p>
+            <p class="explanation-description">Conversion Tech® AI Agent will help businesses to manage customers and
+                increase the ROI</p>
         </div>
         <div class="slider">
             <div class="slider-cell">
                 <div class="slider-box">
-                    <p class="box-text">Increase marketing ROI up to</p>
-                    <p class="box-number">12x</p>
+                    <img src="roi.svg" alt="" class="cell-image">
+                    <div class="box-text-wrap">
+                        <p class="box-text">Increase marketing ROI up to</p>
+                        <p class="box-number">12x</p>
+                    </div>
                 </div>
                 <div class="slider-text-wrap">
                     <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
@@ -197,8 +203,11 @@
             </div>
             <div class="slider-cell">
                 <div class="slider-box">
-                    <p class="box-text">Efficient Registration</p>
-                    <p class="box-number">85%</p>
+                    <img src="form.svg" alt="" class="cell-image">
+                    <div class="box-text-wrap">
+                        <p class="box-text">Efficient Registration</p>
+                        <p class="box-number">85%</p>
+                    </div>
                 </div>
                 <div class="slider-text-wrap">
                     <p class="slider-text">Reduce manual registration by up to 85%</p>
@@ -206,8 +215,11 @@
             </div>
             <div class="slider-cell">
                 <div class="slider-box">
-                    <p class="box-text">CRM</p>
-                    <p class="box-number">AUTO SYNC</p>
+                    <img src="server.svg" alt="" class="cell-image">
+                    <div class="box-text-wrap">
+                        <p class="box-text">CRM</p>
+                        <p class="box-number">AUTO SYNC</p>
+                    </div>
                 </div>
                 <div class="slider-text-wrap">
                     <p class="slider-text">All customer details will be sync automatically into your CRM</p>
@@ -215,19 +227,76 @@
             </div>
             <div class="slider-cell">
                 <div class="slider-box">
-                    <p class="box-text">Conversion from Leads to Customer</p>
-                    <p class="box-number">25%</p>
+                    <img src="customer.svg" alt="" class="cell-image">
+                    <div class="box-text-wrap">
+                        <p class="box-text">Conversion from Leads to Customer</p>
+                        <p class="box-number">25%</p>
+                    </div>
                 </div>
                 <div class="slider-text-wrap">
-                    <p class="slider-text">Increase in conversion from leads to customer better than human's conversion</p>
+                    <p class="slider-text">Increase in conversion from leads to customer better than human's conversion
+                    </p>
                 </div>
             </div>
             <style>
-                .slider-cell {
-                    width: 100%;
+                .explanation {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 30px;
+                    width: 100svw;
+                    overflow: hidden;
+                    padding-bottom: 50px;
                 }
+
+                .explanation-intro {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 20px 15%;
+                }
+
+                .intro-label {
+                    font-weight: 400;
+                    font-size: 12px;
+                    letter-spacing: 15%;
+                    color: #000000;
+                    text-transform: uppercase;
+                }
+
+                .intro-title {
+                    font-size: 48px;
+                    line-height: 125%;
+                    font-weight: 300;
+                }
+
+                .explanation-description {
+                    padding-top: 15px;
+                    font-size: 20px;
+                    color: #666;
+                    line-height: 150%;
+                    font-weight: 300;
+                }
+
+                .slider {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    width: 100svw;
+                    overflow-x: scroll;
+                }
+
+                .slider-cell {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                }
+
                 .slider-box {
                     aspect-ratio: 1/1;
+                    min-width: 300px;
                     width: 100%;
                     background-color: #F4F4F4;
                     border-radius: 20px;
@@ -235,7 +304,33 @@
                     flex-direction: column;
                     align-items: start;
                     justify-content: space-between;
-                    padding: 30px;
+                    padding: 20px;
+                }
+
+                .cell-image {
+                    width: 100px;
+                    aspect-ratio: 1/1;
+                }
+
+                .slider-text-wrap {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 0px 20px;
+                }
+
+                .slider-text {
+                    width: 100%;
+                    font-size: 15px;
+                    line-height: 150%;
+                    color: #666;
+                }
+
+                .slider-image {
+                    width: 100%;
+                    object-fit: cover;
+                    aspect-ratio: 1/1;
+                    border-radius: 50px;
                 }
 
                 .box-text {
@@ -247,13 +342,15 @@
 
                 .box-number {
                     font-style: italic;
+                    text-wrap: nowrap;
                     font-weight: 900;
-                    font-size: 50px;
+                    font-size: 48px;
                     background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
                     text-fill-color: transparent;
+                    line-height: 120%;
 
                 }
             </style>
@@ -362,7 +459,8 @@
         <div class="explanation-intro">
             <p class="intro-label">Digital Concierge</p>
             <h2 class="intro-title">Handle each customer responsively and personalized</h2>
-            <p class="explanation-description">Conversion Tech® AI Agent will also help businesses by responding chat from
+            <p class="explanation-description">Conversion Tech® AI Agent will also help businesses by responding chat
+                from
                 customer and follow-up customer’s interest</p>
         </div>
         <div class="slider">
@@ -385,87 +483,13 @@
                 </div>
             </div>
         </div>
-        <style>
-            .explanation {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 30px;
-                width: 100svw;
-                overflow: hidden;
-                padding-bottom: 50px;
-            }
-
-            .explanation-intro {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 20px 15%;
-            }
-
-            .intro-label {
-                font-weight: 400;
-                font-size: 12px;
-                letter-spacing: 15%;
-                color: #000000;
-                text-transform: uppercase;
-            }
-
-            .intro-title {
-                font-size: 48px;
-                line-height: 125%;
-                font-weight: 300;
-            }
-
-            .explanation-description {
-                padding-top: 15px;
-                font-size: 20px;
-                color: #666;
-                line-height: 150%;
-                font-weight: 300;
-            }
-
-            .slider {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 20px;
-                width: 100%;
-                overflow-x: scroll;
-                padding: 0 15%;
-            }
-
-            .slider-cell {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .slider-text-wrap {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 0px 20px;
-            }
-
-            .slider-text {
-                width: 100%;
-                font-size: 15px;
-                line-height: 150%;
-                color: #666;
-            }
-
-            .slider-image {
-                aspect-ratio: 1/1;
-                max-height: 300px;
-            }
-        </style>
     </section>
     <section id="contact">
         <video src="aiagent.mp4" autoplay loop muted></video>
         <div class="contact-text">
             <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our personalized AI technology</p>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
+                personalized AI technology</p>
             <button class="contact-button">Book Free Consultation</button>
         </div>
         <style>
@@ -497,6 +521,7 @@
                 max-width: 50vw;
                 padding: 50px;
             }
+
             .contact-text p {
                 line-height: 150%;
                 font-size: 20px;
@@ -562,7 +587,7 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
-                
+
             }
 
             .footer-logo {

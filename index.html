@@ -48,7 +48,8 @@
 </style>
 
 <body>
-    <img src="linebg.svg" alt="background" id="background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.8;">
+    <img src="linebg.svg" alt="background" id="background"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.8;">
     <header>
         <div class="menu-bar" id="products-menu-bar">
             <p class="menu title">Products</p>
@@ -73,7 +74,8 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 25px 50px;
-                box-sizing: border-box; /* Mencegah overflow horizontal */
+                box-sizing: border-box;
+                /* Mencegah overflow horizontal */
                 z-index: 100;
             }
 
@@ -155,7 +157,7 @@
             pagesMenuBar.addEventListener('mouseleave', () => {
                 document.getElementById('menu-about').style.display = 'none';
                 document.getElementById('menu-privacy').style.display = 'none';
-            }); 
+            });
 
             headerLogo.addEventListener('click', () => {
                 window.location.href = 'index.html';
@@ -165,7 +167,8 @@
     <div id="hero">
         <div class="subtitle">
             <h1>A harmony of wellness, <br> beauty, and technology <br> in the most innovative <br> way possible.</h1>
-            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by implementing personalized AI technology</p>
+            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by
+                implementing personalized AI technology</p>
         </div>
         <style>
             #hero {
@@ -193,14 +196,30 @@
                 margin: auto auto;
                 font-weight: 300;
             }
+
             .subtitle h1 {
                 font-size: 64px;
                 line-height: 150%;
                 font-weight: 200;
             }
-            .subtitle  p {
+
+            .subtitle p {
                 font-size: 32px;
                 line-height: 150%;
+            }
+
+            @media screen and (max-width: 800px) {
+                .subtitle {
+                    width: 100%;
+                }
+
+                .subtitle h1 {
+                    font-size: 40px;
+                }
+
+                .subtitle p {
+                    font-size: 24px;
+                }
             }
         </style>
     </div>
@@ -246,7 +265,8 @@
                 gap: 40px;
                 margin-left: 30%;
                 /* Jarak antar logo */
-                width: max-content;
+                width: 100svw;
+                overflow: hidden;
                 /* Wajib pakai ini biar panjangnya menyesuaikan isi */
                 animation: scroll-left 30s linear infinite;
                 /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
@@ -447,14 +467,13 @@
             .explanation-cell {
                 display: flex;
                 flex-direction: row;
-                width: 100%;
+                width: 100svw;
                 transition: opacity 0.2s ease, visibility 0.2s ease;
                 align-items: stretch;
             }
 
             .explanation-quote {
                 padding: 100px;
-                min-width: 60%;
                 width: 100%;
                 height: 100svh;
                 flex-grow: 1;
@@ -511,9 +530,9 @@
                 justify-content: center;
                 flex-grow: 1;
                 width: 100%;
-                min-width: 40%;
                 height: 90svh;
             }
+
             #chat-hero {
                 background: url(lines.jpg);
                 background-size: 100% 100%;
@@ -523,6 +542,7 @@
                 overflow: hidden;
                 padding: 0px 10%;
             }
+
             .scaled-frame {
                 width: 50%;
                 position: relative;
@@ -538,10 +558,44 @@
                 height: 100%;
                 object-fit: cover;
             }
+
+            @media screen and (max-width: 800px) {
+                .explanation-cell {
+                    flex-direction: column;
+                }
+
+                .column {
+                    width: 100%;
+                }
+
+                .explanation-quote {
+                    width: 100%;
+                    height: 60svw;
+                }
+
+                .explanation-quote p {
+                    font-size: 24px;
+                }
+
+                .explanation-product {
+                    height: 40svw;
+                }
+
+                .explanation-title {
+                    font-size: 24px;
+                    line-height: 150%;
+                }
+
+                .explanation-description {
+                    font-size: 18px;
+                    color: #666;
+                    line-height: 150%;
+                }
+            }
         </style>
     </div>
     <section id="clients">
-        <h2 style="text-align: center; font-weight: 300; font-size: 48px;">Splendify has been <b>trusted</b> by more than 250 clients </h2>
+        <h2>Splendify has been <b>trusted</b> by more than 250 clients </h2>
         <div class="testimonials">
             <div class="testimonial-cell">
                 <img src="quote.svg" alt="quote" class="quote-icon">
@@ -597,6 +651,12 @@
                 margin: 0 auto;
             }
 
+            #clients h2 {
+                text-align: center;
+                font-weight: 300;
+                font-size: 48px;
+            }
+
             .testimonials {
                 display: flex;
                 flex-direction: row;
@@ -631,12 +691,41 @@
                 order: 1;
                 flex-grow: 0;
             }
+
+            @media screen and (max-width: 800px) {
+                #clients {
+                    padding: 5%;
+                }
+
+                #clients h2 {
+                    font-size: 32px;
+                }
+
+                .testimonials {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 0px 0px;
+                    gap: 10px;
+                    width: 100%;
+                    order: 2;
+                    flex-grow: 0;
+                }
+
+                .testimonial-cell {
+                    padding: 30px 20px;
+                    gap: 10px;
+                    width: 100%;
+                    min-width: 200px;
+                    min-height: 400px;
+                }
+            }
         </style>
     </section>
     <section id="contact">
         <div class="contact-text">
             <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our personalized AI technology</p>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
+                personalized AI technology</p>
             <button class="contact-button">Book Free Consultation</button>
         </div>
         <style>
@@ -669,6 +758,7 @@
                 padding: 50px;
                 text-align: center;
             }
+
             .contact-text p {
                 line-height: 150%;
                 font-size: 20px;
@@ -699,6 +789,16 @@
 
             .contact-button:hover {
                 background-color: #0056b3;
+            }
+
+            @media screen and (max-width: 800px) {
+                #contact h2 {
+                    font-size: 32px;
+                }
+
+                #contact p {
+                    font-size: 16px;
+                }
             }
         </style>
     </section>
@@ -734,7 +834,7 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
-                
+
             }
 
             .footer-logo {
