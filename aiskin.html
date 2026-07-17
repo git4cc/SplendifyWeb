@@ -33,71 +33,7 @@
 
         section {
             width: 100%;
-            border-radius: 20px;
             flex-wrap: wrap;
-        }
-
-        /* Pembungkus area scroll animasi (Track) */
-        #scroll-track {
-            height: 250svh;
-            /* Ketinggian dikurangi agar scroll tidak terlalu jauh */
-            position: relative;
-        }
-
-        /* Area yang menempel di layar selama di dalam scroll track */
-        #sticky-view {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100svh;
-            overflow: hidden;
-        }
-
-        /* Container Gambar Utama */
-        #img-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            pointer-events: none;
-            transform-origin: center center;
-            will-change: transform;
-        }
-
-        .img-layer {
-            position: absolute;
-            height: 100vh;
-            object-fit: contain;
-            opacity: 0;
-            will-change: opacity;
-        }
-
-        #img1 {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        #img2 {
-            z-index: 2;
-        }
-
-        #img3 {
-            z-index: 3;
-        }
-
-        .light {
-            position: absolute;
-            width: 150px;
-            height: 100vh;
-            background: linear-gradient(90deg, rgba(0, 215, 176, 0) 0%, #00D7B0 100%);
-            z-index: 4;
-            opacity: 0;
-            will-change: transform, opacity;
         }
     </style>
 </head>
@@ -237,14 +173,13 @@
 
             #hero {
                 width: 100%;
-                height: 60vh;
+                height: 100vh;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 padding: 0 10%;
                 box-sizing: border-box;
-                background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), #DEDEDE;
             }
 
             #hero-text {
@@ -281,28 +216,27 @@
 
             <div id="result">
                 <h2>AI Skin Analysis Result</h2>
-
-                <div class="result-cell" data-x="0" data-y="-200">
+                <div class="result-cell sebum" data-x="0" data-y="-200">
                     <p class="result-title">Sebum</p>
                     <p class="result-number">3.0</p>
                     <p class="result-desc">Moderate</p>
                 </div>
-                <div class="result-cell" data-x="-200" data-y="-20">
+                <div class="result-cell wrinkle" data-x="-200" data-y="-20">
                     <p class="result-title">Wrinkle</p>
                     <p class="result-number">5.0</p>
                     <p class="result-desc">Normal</p>
                 </div>
-                <div class="result-cell" data-x="200" data-y="-20">
+                <div class="result-cell redness" data-x="200" data-y="-20">
                     <p class="result-title">Redness</p>
                     <p class="result-number">4.4</p>
                     <p class="result-desc">Normal</p>
                 </div>
-                <div class="result-cell" data-x="-300" data-y="180">
+                <div class="result-cell pore" data-x="-300" data-y="180">
                     <p class="result-title">Pore</p>
                     <p class="result-number">5.0</p>
                     <p class="result-desc">Normal</p>
                 </div>
-                <div class="result-cell" data-x="300" data-y="180">
+                <div class="result-cell pigment" data-x="300" data-y="180">
                     <p class="result-title">Pigment</p>
                     <p class="result-number">2.5</p>
                     <p class="result-desc">Severe</p>
@@ -319,7 +253,6 @@
                         z-index: 3;
                         opacity: 0;
                         pointer-events: none;
-                        will-change: opacity;
                     }
 
                     #result h2 {
@@ -328,26 +261,25 @@
                         text-align: center;
                         font-size: 32px;
                         font-weight: 300;
+
                     }
 
-                    .result-cell {
+                    #result .result-cell {
                         position: absolute;
-                        background: #F4F4F4;
-                        color: #000;
                         padding: 20px 30px;
                         border-radius: 20px;
                         text-align: center;
                         top: 50%;
                         left: 50%;
-                        transform: translate(-50%, -50%) scale(0);
                         opacity: 0;
-                        aspect-ratio: 1/1;
-                        width: 100px;
+                        width: 150px;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
                         will-change: transform, opacity;
+                        backdrop-filter: blur(50px);
+                        -webkit-backdrop-filter: blur(50px);
                     }
 
                     .result-cell p {
@@ -355,8 +287,8 @@
                     }
 
                     .result-title {
-                        font-weight: 600;
-                        font-size: 18px;
+                        font-weight: 400;
+                        font-size: 20px;
                     }
 
                     .result-number {
@@ -365,6 +297,132 @@
 
                     .result-desc {
                         font-size: 12px;
+                    }
+
+                    .sebum {
+                        background-color: #66B47275;
+                    }
+
+                    .wrinkle {
+                        background-color: #66DAD675;
+                    }
+
+                    .redness {
+                        background-color: #B4666675;
+                    }
+
+                    .pore {
+                        background-color: #6677B475;
+                    }
+
+                    .pigment {
+                        background-color: #DFA6FA75;
+                    }
+                </style>
+            </div>
+            <div id="result-mobile">
+                <h2>AI Skin Analysis Result</h2>
+                <div class="result-wrapper">
+                <div class="result-cell sebum">
+                    <p class="result-title">Sebum</p>
+                    <p class="result-number">3.0</p>
+                    <p class="result-desc">Moderate</p>
+                </div>
+                <div class="result-cell wrinkle">
+                    <p class="result-title">Wrinkle</p>
+                    <p class="result-number">5.0</p>
+                    <p class="result-desc">Normal</p>
+                </div>
+                <div class="result-cell redness">
+                    <p class="result-title">Redness</p>
+                    <p class="result-number">4.4</p>
+                    <p class="result-desc">Normal</p>
+                </div>
+                <div class="result-cell pore">
+                    <p class="result-title">Pore</p>
+                    <p class="result-number">5.0</p>
+                    <p class="result-desc">Normal</p>
+                </div>
+                <div class="result-cell pigment">
+                    <p class="result-title">Pigment</p>
+                    <p class="result-number">2.5</p>
+                    <p class="result-desc">Severe</p>
+                </div>
+                </div>
+                <style>
+                    /* Mobile Result Styles */
+                    #result-mobile {
+                        position: absolute;
+                        /* Mengikuti container sticky-view */
+                        top: 100px;
+                        left: 0;
+                        width: 100svw;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 15px;
+                        z-index: 100;
+                        box-sizing: border-box;
+                        overflow-x: scroll;
+                        /* Antisipasi layar hp pendek agar bisa di-scroll */
+                    }
+                    #result-mobile h2 {
+                        position: absolute;
+                        top: 0%;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 32px;
+                        font-weight: 300;
+                    }
+                    .result-wrapper {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 15px;
+                        overflow-x: scroll;
+                        /* Antisipasi layar hp pendek agar bisa di-scroll */
+                        width: 100%;
+                        justify-content: start;
+                        padding: 30px;
+                    }
+
+                    /* Style khusus untuk cell versi mobile */
+                    #result-mobile .result-cell {
+                        position: relative;
+                        margin-top: 30px;
+                        /* Pastikan terlihat */
+                        min-width: 150px;
+                        width: 100%;
+                        padding: 30px;
+                        border-radius: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        /* Berjejer horizontal di dalam card mobile agar rapi */
+                        justify-content: space-between;
+                        align-items: center;
+                        backdrop-filter: blur(30px);
+                        -webkit-backdrop-filter: blur(30px);
+                    }
+
+                    /* Responsif toggle visibility */
+                    @media screen and (max-width: 1000px) {
+                        #result-mobile {
+                            display: flex;
+                        }
+
+                        #result {
+                            display: none !important;
+                        }
+                    }
+
+                    @media screen and (min-width: 1000px) {
+                        #result-mobile {
+                            display: none !important;
+                        }
+
+                        #result {
+                            display: flex;
+                        }
                     }
                 </style>
             </div>
@@ -376,292 +434,71 @@
                 <div id="lightWipe" class="light"></div>
             </div>
         </div>
-    </section>
-
-    <section class="explanation">
-        <div class="explanation-intro">
-            <p class="intro-label">Innovation for All</p>
-            <h2 class="intro-title">All gender. All races. All skin tones</h2>
-            <p class="explanation-description">Our AI Skin Analysis could scan skin healthiness on all skin tones, no
-                matter with gender, no matter with races.</p>
-        </div>
-        <div id="face-grid">
-            <img src="skin-tones/american-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/asian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/african-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/african-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/indian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/asian-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/arabian-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/american-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/european-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/arabian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/european-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/indian-man.jpg" alt="" class="face-cell">
-        </div>
-        <script>
-
-        </script>
         <style>
-            .explanation {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 30px;
+            /* Pembungkus area scroll animasi (Track) */
+            #scroll-track {
+                height: 250svh;
+                /* Ketinggian dikurangi agar scroll tidak terlalu jauh */
+                position: relative;
+            }
+
+            /* Area yang menempel di layar selama di dalam scroll track */
+            #sticky-view {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                height: 100svh;
                 overflow: hidden;
-                padding: 100px 0px;
+            }
+
+            /* Container Gambar Utama */
+            #img-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+                pointer-events: none;
+                transform-origin: center center;
+                will-change: transform;
+            }
+
+            .img-layer {
+                position: absolute;
+                height: 100vh;
+                object-fit: contain;
+                opacity: 0;
+                will-change: opacity;
+            }
+
+            #img1 {
+                opacity: 1;
+                z-index: 1;
+            }
+
+            #img2 {
                 z-index: 2;
             }
 
-            .explanation-intro {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 0px 10%;
+            #img3 {
+                z-index: 3;
             }
 
-            .intro-label {
-                font-weight: 400;
-                font-size: 12px;
-                letter-spacing: 15%;
-                color: #000000;
-                text-transform: uppercase;
-            }
-
-            .intro-title {
-                font-size: 48px;
-                line-height: 125%;
-                font-weight: 300;
-            }
-
-            .explanation-description {
-                padding-top: 15px;
-                font-size: 20px;
-                color: #666;
-                line-height: 150%;
-                font-weight: 300;
-            }
-
-            .slider {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-                width: 100%;
-                overflow-x: scroll;
-                padding: 0px 10%;
-            }
-
-            .slider-cell {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .slider-text-wrap {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 0px 20px;
-            }
-
-            .slider-title {
-                font-size: 20px;
-                line-height: 150%;
-                font-weight: 500;
-            }
-
-            .slider-text {
-                width: 100%;
-                font-size: 15px;
-                line-height: 150%;
-                color: #666;
-            }
-
-            .slider-image {
-                aspect-ratio: 1/1;
-                max-height: 300px;
-                border-radius: 50px;
-                object-fit: cover;
-            }
-            /* Mengatur tata letak grid (opsional, sesuaikan dengan kebutuhanmu) */
-            #face-grid {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr);
-                /* Membuat 4 kolom */
-                /* perspective memberikan kedalaman ruang 3D pada elemen di dalamnya */
-                perspective: 1000px;
-            }
-
-            .face-cell {
-                width: 100%;
-                transition: transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
-
-                /* Mempertahankan efek 3D saat elemen berputar */
-                transform-style: preserve-3d;
-            }
-
-            @keyframes flip360 {
-                0% {
-                    transform: rotateY(0deg);
-                }
-
-                100% {
-                    transform: rotateY(360deg);
-                }
-            }
-
-            /* Kelas ini akan disisipkan secara otomatis oleh JavaScript */
-            .flip-active {
-                /* Menjalankan animasi selama 0.8 detik */
-                animation: flip360 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            .light {
+                position: absolute;
+                width: 150px;
+                height: 100vh;
+                background: linear-gradient(90deg, rgba(0, 215, 176, 0) 0%, #00D7B0 100%);
+                z-index: 4;
+                opacity: 0;
+                will-change: transform, opacity;
             }
         </style>
-        <script>
-            // 1. Ambil semua elemen gambar yang memiliki class 'face-cell'
-            const images = document.querySelectorAll('.face-cell');
-
-            function flipRandomImage() {
-                // 2. Pilih indeks acak dari total jumlah gambar yang ada
-                const randomIndex = Math.floor(Math.random() * images.length);
-                const selectedImage = images[randomIndex];
-
-                // 3. Tambahkan class 'flip-active' untuk memicu animasi CSS
-                selectedImage.classList.add('flip-active');
-
-                // 4. Hapus class tersebut setelah animasi selesai (800 milidetik / 0.8 detik)
-                // Ini penting agar gambar yang sama bisa dianimasikan lagi jika terpilih kembali nanti
-                setTimeout(() => {
-                    selectedImage.classList.remove('flip-active');
-                }, 1000);
-            }
-
-            // 5. Jalankan fungsi secara terus-menerus (infinite) setiap 1000 milidetik (1 detik)
-            // Kamu bisa mengubah angka 1000 untuk mempercepat atau memperlambat interval kemunculan animasi
-            setInterval(flipRandomImage, 2000);
-        </script>
-    </section>
-    <section class="explanation">
-        <div class="explanation-intro">
-            <p class="intro-label">Use Case</p>
-            <h2 class="intro-title">Imagine this AI technology used for these businesses</h2>
-        </div>
-        <div class="slider">
-            <div class="slider-cell">
-                <img src="beauty-clinic.jpeg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Beauty Clinics</p>
-                    <p class="slider-text">Customers could do a screening conveniently before undergo a treatment. Then,
-                        practitioner could treat customer based on screening result accurately</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="manufacture.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Skincare Manufacturer</p>
-                    <p class="slider-text">Manufacturer could build an app for people to get engaged with the products
-                    </p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="aesthetician.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Aesthetics</p>
-                    <p class="slider-text">Aesthetician could treat customer accurately and give personalized
-                        recommendation while keeping the experience engaging and enjoyful</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="supplement.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Supplement Company</p>
-                    <p class="slider-text">Company can promote their supplement through recommended products based on
-                        face scanning result</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="skincare-retail.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Beauty & Wellness Retail</p>
-                    <p class="slider-text">Retailer could use Splendify AI technology to recommend their products based on face scanning result</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <img src="face-smile.png" alt="contact">
-        <div class="contact-text">
-            <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
-                personalized AI technology</p>
-            <button class="contact-button">Book Free Consultation</button>
-        </div>
-        <style>
-            #contact {
-                display: flex;
-                flex-direction: row;
-                gap: 0px;
-                align-items: center;
-                justify-content: center;
-                z-index: 2;
-                background: white;
-                width: 100%;
-                margin: 0 auto;
-            }
-
-            #contact video {
-                aspect-ratio: 1/1;
-                width: 100%;
-                max-width: 500px;
-                filter: brightness(150%);
-            }
-
-            .contact-text {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                text-align: left;
-                width: 100%;
-                max-width: 50vw;
-                padding: 50px;
-            }
-
-            .contact-text p {
-                line-height: 150%;
-                font-size: 20px;
-                font-weight: 300;
-            }
-
-            .contact-text h2 {
-                font-size: 48px;
-                font-weight: 300;
-                line-height: 150%;
-            }
-
-            .contact-button {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 20px;
-                gap: 8px;
-                width: fit-content;
-                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                border-radius: 96px;
-                color: white;
-                font-weight: bold;
-                font-size: 16px;
-                border: none;
-            }
-
-            .contact-button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    </section>
-
-    <script>
+         <script>
         function map(val, inMin, inMax, outMin, outMax) {
             if (val < inMin) return outMin;
             if (val > inMax) return outMax;
@@ -746,6 +583,7 @@
             }
 
             document.getElementById('result').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
+            document.getElementById('result-mobile').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
 
             const cells = document.querySelectorAll('.result-cell');
             const spread = map(scroll, 0.75, 0.9, 0, 1);
@@ -761,6 +599,329 @@
         // Panggil satu kali saat muat halaman
         window.dispatchEvent(new Event('scroll'));
     </script>
+    </section>
+
+    <section class="explanation">
+        <div class="explanation-intro">
+            <p class="intro-label">Innovation for All</p>
+            <h2 class="intro-title">All gender. All races. All skin tones</h2>
+            <p class="explanation-description">Our AI Skin Analysis could scan skin healthiness on all skin tones, no
+                matter with gender, no matter with races.</p>
+        </div>
+        <div id="face-grid">
+            <img src="skin-tones/american-man.jpg" alt="" class="face-cell">
+            <img src="skin-tones/asian-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/african-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/african-man.jpg" alt="" class="face-cell">
+            <img src="skin-tones/indian-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/asian-man.jpg" alt="" class="face-cell">
+            <img src="skin-tones/arabian-man.jpg" alt="" class="face-cell">
+            <img src="skin-tones/american-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/european-man.jpg" alt="" class="face-cell">
+            <img src="skin-tones/arabian-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/european-woman.jpg" alt="" class="face-cell">
+            <img src="skin-tones/indian-man.jpg" alt="" class="face-cell">
+        </div>
+        <style>
+            .explanation {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                overflow: hidden;
+                z-index: 2;
+            }
+
+            .explanation-intro {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 10svw 10svw 20px 10svw;
+            }
+
+            @media screen and (max-width: 1000px) {
+                .explanation-intro {
+                    padding: 50px 30px 10px 30px;
+                }
+            }
+
+            .intro-label {
+                font-weight: 400;
+                font-size: 12px;
+                letter-spacing: 15%;
+                color: #000000;
+                text-transform: uppercase;
+            }
+
+            .intro-title {
+                font-size: 48px;
+                line-height: 125%;
+                font-weight: 300;
+            }
+
+            .explanation-description {
+                padding-top: 15px;
+                font-size: 20px;
+                color: #666;
+                line-height: 150%;
+                font-weight: 300;
+            }
+
+            .slider {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                width: 100%;
+                overflow-x: scroll;
+                padding: 0px 10svw 10svw 10svw;
+            }
+
+            @media screen and (max-width: 1000px) {
+                .slider {
+                    padding: 0px 30px 20px 30px;
+                }
+            }
+
+            .slider-cell {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .slider-text-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 0px 20px;
+            }
+
+            .slider-title {
+                font-size: 20px;
+                line-height: 150%;
+                font-weight: 500;
+            }
+
+            .slider-text {
+                width: 100%;
+                font-size: 15px;
+                line-height: 150%;
+                color: #666;
+            }
+
+            .slider-image {
+                aspect-ratio: 1/1;
+                max-height: 300px;
+                border-radius: 50px;
+                object-fit: cover;
+            }
+
+            /* Mengatur tata letak grid (opsional, sesuaikan dengan kebutuhanmu) */
+            #face-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                /* Membuat 4 kolom */
+                /* perspective memberikan kedalaman ruang 3D pada elemen di dalamnya */
+                perspective: 1000px;
+            }
+
+            .face-cell {
+                width: 100%;
+                transition: transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+
+                /* Mempertahankan efek 3D saat elemen berputar */
+                transform-style: preserve-3d;
+            }
+
+            @keyframes flip360 {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                100% {
+                    transform: rotateY(360deg);
+                }
+            }
+
+            /* Kelas ini akan disisipkan secara otomatis oleh JavaScript */
+            .flip-active {
+                /* Menjalankan animasi selama 0.8 detik */
+                animation: flip360 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            }
+
+            @media screen and (max-width: 800px) {
+                .intro-title {
+                    font-size: 32px;
+                }
+
+                #face-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        </style>
+        <script>
+            // 1. Ambil semua elemen gambar yang memiliki class 'face-cell'
+            const images = document.querySelectorAll('.face-cell');
+
+            function flipRandomImage() {
+                // 2. Pilih indeks acak dari total jumlah gambar yang ada
+                const randomIndex = Math.floor(Math.random() * images.length);
+                const selectedImage = images[randomIndex];
+
+                // 3. Tambahkan class 'flip-active' untuk memicu animasi CSS
+                selectedImage.classList.add('flip-active');
+
+                // 4. Hapus class tersebut setelah animasi selesai (800 milidetik / 0.8 detik)
+                // Ini penting agar gambar yang sama bisa dianimasikan lagi jika terpilih kembali nanti
+                setTimeout(() => {
+                    selectedImage.classList.remove('flip-active');
+                }, 1000);
+            }
+
+            // 5. Jalankan fungsi secara terus-menerus (infinite) setiap 1000 milidetik (1 detik)
+            // Kamu bisa mengubah angka 1000 untuk mempercepat atau memperlambat interval kemunculan animasi
+            setInterval(flipRandomImage, 2000);
+        </script>
+    </section>
+    <section class="explanation">
+        <div class="explanation-intro">
+            <p class="intro-label">Use Case</p>
+            <h2 class="intro-title">Imagine this AI technology used for these businesses</h2>
+        </div>
+        <div class="slider">
+            <div class="slider-cell">
+                <img src="beauty-clinic.jpeg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-title">Beauty Clinics</p>
+                    <p class="slider-text">Customers could do a screening conveniently before undergo a treatment. Then,
+                        practitioner could treat customer based on screening result accurately</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="manufacture.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-title">Skincare Manufacturer</p>
+                    <p class="slider-text">Manufacturer could build an app for people to get engaged with the products
+                    </p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="aesthetician.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-title">Aesthetics</p>
+                    <p class="slider-text">Aesthetician could treat customer accurately and give personalized
+                        recommendation while keeping the experience engaging and enjoyful</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="supplement.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-title">Supplement Company</p>
+                    <p class="slider-text">Company can promote their supplement through recommended products based on
+                        face scanning result</p>
+                </div>
+            </div>
+            <div class="slider-cell">
+                <img src="skincare-retail.jpg" alt="" class="slider-image">
+                <div class="slider-text-wrap">
+                    <p class="slider-title">Beauty & Wellness Retail</p>
+                    <p class="slider-text">Retailer could use Splendify AI technology to recommend their products based
+                        on face scanning result</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <img src="face-smile.png" alt="contact">
+        <div class="contact-text">
+            <h2>Ready to implement Splendify AI?</h2>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
+                personalized AI technology</p>
+            <button class="contact-button">Book Free Consultation</button>
+        </div>
+        <style>
+            #contact {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                justify-items: center;
+                gap: 0px;
+                align-items: center;
+                z-index: 2;
+                width: 100%;
+            }
+
+            @media screen and (max-width: 1000px) {
+                #contact {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .contact-text {
+                    align-items: center;
+                    padding: 50px;
+                }
+
+                .contact-text h2 {
+                    text-align: center;
+                    font-weight: 300;
+                    font-size: 28px;
+                }
+
+                .contact-text p {
+                    text-align: center;
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+            }
+
+            #contact img {
+                aspect-ratio: 1/1;
+                width: 100%;
+            }
+
+            .contact-text {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                text-align: left;
+                width: 100%;
+                padding: 15%;
+            }
+
+            .contact-text h2 {
+                font-size: 40px;
+                font-weight: 300;
+                line-height: 150%;
+            }
+
+            .contact-text p {
+                line-height: 150%;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .contact-button {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 20px;
+                gap: 8px;
+                width: fit-content;
+                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                border-radius: 96px;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                border: none;
+            }
+
+            .contact-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </section>
 
     <section id="footer">
         <img src="splendify.svg" alt="splendify" class="footer-logo">
@@ -794,7 +955,6 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
-
             }
 
             .footer-logo {
@@ -825,6 +985,18 @@
                 font-size: 12px;
                 letter-spacing: 15%;
                 text-transform: uppercase;
+            }
+
+            @media screen and (max-width: 1000px) {
+                #footer {
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 20px;
+                }
+
+                #footer-menus {
+                    flex-direction: column;
+                }
             }
         </style>
     </section>

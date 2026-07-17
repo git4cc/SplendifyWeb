@@ -7,8 +7,7 @@
     <title>Splendify</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
 </head>
 
@@ -30,38 +29,45 @@
         gap: 20px;
         background: #fafafa;
         overflow-x: hidden;
+        width: 100%;
     }
 
     h1 {
         margin: 0;
-        font-size: 46px;
-        line-height: 150%;
+        font-size: 32px;
+        line-height: 130%;
         font-weight: 300;
     }
 
     h2 {
         margin: 0;
-        font-size: 28px;
-        line-height: 150%;
+        font-size: 24px;
+        line-height: 130%;
         font-weight: 300;
+    }
+
+    @media screen and (min-width: 800px) {
+        h1 { font-size: 46px; line-height: 150%; }
+        h2 { font-size: 28px; line-height: 150%; }
     }
 </style>
 
 <body>
     <img src="linebg.svg" alt="background" id="background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.8;">
+    
     <header>
         <div class="menu-bar" id="products-menu-bar">
             <p class="menu title">Products</p>
             <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
-            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
-            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
+            <a class="menu" id="menu-agent" href="aiagent.html">AI Agent</a>
+            <a class="menu" id="menu-platform" href="fabulas.html">Platform</a>
         </div>
         <img src="splendify.svg" alt="splendify" id="header-logo">
-        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
+        <div class="menu-bar" style="align-items: flex-end;" id="pages-menu-bar">
             <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about">About Splendify</a>
-            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
+            <a class="menu" id="menu-about">About</a>
+            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy</a>
         </div>
         <style>
             header {
@@ -73,40 +79,37 @@
                 align-items: start;
                 justify-content: space-between;
                 width: 100%;
-                padding: 25px 50px;
+                padding: 15px 20px;
                 box-sizing: border-box;
-                /* Mencegah overflow horizontal */
                 z-index: 100;
+                background: linear-gradient(to bottom, rgba(250,250,250,0.9), rgba(250,250,250,0));
             }
 
             .menu {
                 display: none;
                 flex-direction: row;
                 align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                width: fit-content;
+                background-color: rgba(255, 255, 255, 0.8);
+                width: max-content;
                 height: fit-content;
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 border-radius: 100px;
-                padding: 10px 20px;
+                padding: 8px 14px;
                 letter-spacing: 1px;
-                font-size: 14px;
+                font-size: 11px;
                 font-weight: 400;
                 text-transform: uppercase;
                 cursor: pointer;
                 transition: all 0.3s ease;
                 text-decoration: none;
                 color: #000;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             }
 
             .menu:hover {
                 background-color: rgba(255, 255, 255, 1);
                 font-weight: 600;
-            }
-
-            .menu p {
-                margin: 0;
             }
 
             .title {
@@ -116,20 +119,26 @@
             .menu-bar {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
-                font-size: 14px;
+                gap: 8px;
+                font-size: 12px;
                 font-weight: 400;
                 text-transform: uppercase;
             }
 
             #header-logo {
-                padding: 10px 20px;
+                padding: 8px 16px;
                 background: white;
                 border-radius: 100px;
-                height: 40px;
-                position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
+                height: 34px;
+                cursor: pointer;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+
+            @media screen and (min-width: 800px) {
+                header { padding: 25px 50px; }
+                .menu { font-size: 14px; padding: 10px 20px; }
+                .menu-bar { gap: 10px; font-size: 14px; }
+                #header-logo { height: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
             }
         </style>
         <script>
@@ -137,53 +146,45 @@
             const pagesMenuBar = document.getElementById('pages-menu-bar');
             const headerLogo = document.getElementById('header-logo');
 
-            productsMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-skin').style.display = 'flex';
-                document.getElementById('menu-agent').style.display = 'flex';
-                document.getElementById('menu-platform').style.display = 'flex';
+            const toggleDisplay = (ids, displayStyle) => {
+                ids.forEach(id => document.getElementById(id).style.display = displayStyle);
+            };
+
+            productsMenuBar.addEventListener('mouseenter', () => toggleDisplay(['menu-skin', 'menu-agent', 'menu-platform'], 'flex'));
+            productsMenuBar.addEventListener('mouseleave', () => toggleDisplay(['menu-skin', 'menu-agent', 'menu-platform'], 'none'));
+            pagesMenuBar.addEventListener('mouseenter', () => toggleDisplay(['menu-about', 'menu-privacy'], 'flex'));
+            pagesMenuBar.addEventListener('mouseleave', () => toggleDisplay(['menu-about', 'menu-privacy'], 'none'));
+            
+            // Touch support untuk mobile screens
+            productsMenuBar.addEventListener('click', () => {
+                const isHidden = document.getElementById('menu-skin').style.display !== 'flex';
+                toggleDisplay(['menu-skin', 'menu-agent', 'menu-platform'], isHidden ? 'flex' : 'none');
+            });
+            pagesMenuBar.addEventListener('click', () => {
+                const isHidden = document.getElementById('menu-about').style.display !== 'flex';
+                toggleDisplay(['menu-about', 'menu-privacy'], isHidden ? 'flex' : 'none');
             });
 
-            productsMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-skin').style.display = 'none';
-                document.getElementById('menu-agent').style.display = 'none';
-                document.getElementById('menu-platform').style.display = 'none';
-            });
-
-            pagesMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-about').style.display = 'flex';
-                document.getElementById('menu-privacy').style.display = 'flex';
-            });
-
-            pagesMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-about').style.display = 'none';
-                document.getElementById('menu-privacy').style.display = 'none';
-            });
-
-            headerLogo.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
+            headerLogo.addEventListener('click', () => { window.location.href = 'index.html'; });
         </script>
     </header>
+
     <div id="hero">
         <div class="subtitle">
             <h1>A harmony of wellness, <br> beauty, and technology <br> in the most innovative <br> way possible.</h1>
-            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by
-                implementing personalized AI technology</p>
+            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by implementing personalized AI technology</p>
         </div>
         <style>
             #hero {
-                width: 100svw;
-                height: 100svh;
-                padding: 100px;
+                width: 100%;
+                min-height: 100vh;
+                padding: 120px 20px 60px 20px;
                 display: flex;
                 flex-direction: column;
-                align-items: start;
-                justify-content: start;
-                margin: 0 auto;
-                background: url('fractal.jpg');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                background-position: top;
+                align-items: center;
+                justify-content: center;
+                background: url('fractal.jpg') no-repeat center top;
+                background-size: cover;
                 text-align: center;
             }
 
@@ -191,242 +192,141 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                width: 80%;
-                text-align: center;
-                margin: auto auto;
-                font-weight: 300;
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
             }
 
             .subtitle h1 {
-                font-size: 64px;
-                line-height: 150%;
-                font-weight: 200;
+                font-size: 28px;
+                line-height: 140%;
+                font-weight: 300;
             }
 
             .subtitle p {
-                font-size: 32px;
-                line-height: 150%;
-            }
-
-            @media screen and (max-width: 800px) {
-                .subtitle {
-                    width: 100%;
-                }
-
-                .subtitle h1 {
-                    font-size: 40px;
-                }
-
-                .subtitle p {
-                    font-size: 24px;
-                }
-            }
-        </style>
-    </div>
-    <div class="clients-track">
-        <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-        <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-        <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-        <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-        <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-        <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-        <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-        <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-        <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-        <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-        <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-        <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-        <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-        <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-        <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-        <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-
-        <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-        <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-        <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-        <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-        <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-        <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-        <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-        <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-        <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-        <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-        <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-        <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-        <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-        <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-        <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-        <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-
-        <style>
-            .clients-track {
-                display: flex;
-                align-items: center;
-                gap: 40px;
-                margin-left: 30%;
-                /* Jarak antar logo */
-                width: 100svw;
-                overflow: hidden;
-                /* Wajib pakai ini biar panjangnya menyesuaikan isi */
-                animation: scroll-left 30s linear infinite;
-                /* Angka 30s untuk atur kecepatan, makin besar makin lambat */
-                filter: grayscale(100%);
-                animation-delay: 500ms;
-            }
-
-            .client-logo img {
-                max-width: 200px;
-                max-height: 150px;
-                object-fit: contain;
-                /* Biar rasio gambar nggak gepeng */
-            }
-
-            /* Animasi Kunci dari Kanan ke Kiri */
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    /* Geser persis setengah dari total panjang track (sebanyak set pertama) */
-                    transform: translateX(calc(-50% - 20px));
-                    /* -20px adalah kompensasi dari setengah gap */
-                }
-            }
-        </style>
-    </div>
-    <!-- <section id="ascii-embed">
-        <iframe src="ASCII/index.html" frameborder="0" scrolling="no" id="ascii-embed" allowfullscreen width="100%"
-            height="100%"></iframe>
-         <div class="gradient"></div>
-        <style>
-            #ascii-embed {
-                margin: 0;
-                width: 95%;
-                height: auto;
-                aspect-ratio: 16/9;
-                position: relative;
-                z-index: -1;
-                overflow: hidden;
-                background: #fff;
-                margin: 0 auto;
-                border-radius: 20px;
-            }
-
-            #ascii-embed iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
-                display: block;
-            }
-
-            .gradient {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 46.15%, #FFFFFF 100%);
-
-            }
-        </style>
-    </section>  -->
-    <!-- <section id="product">
-        <div class="product-cell">
-            <img src="aiagent.svg" alt="product" class="product-image">
-            <p class="product-title">Conversion Tech® AI Agent</p>
-            <p class="product-description">Recommend best services and products</p>
-        </div>
-        <div class="product-cell">
-            <img src="aiskin.svg" alt="product" class="product-image">
-            <p class="product-title">AI Skin Analysis</p>
-            <p class="product-description">analyze skin problems using phone camera</p>
-        </div>
-        <div class="product-cell">
-            <img src="fabulas.svg" alt="product" class="product-image">
-            <p class="product-title">Wellness Platform</p>
-            <p class="product-description">to book services and buy wellness products</p>
-        </div>
-        <style>
-            #product {
-                display: flex;
-                flex-direction: row;
-                margin: 0 auto;
-                max-width: 800px;
-            }
-
-            .product-cell {
-                text-align: left;
-                border: 0.5px solid #e0e0e0;
-                padding: 40px;
-                gap: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: start;
-                background-color: #ffffff;
-                aspect-ratio: 1/1;
-
-                /* 1. Tambahan untuk efek mengapung yang smooth */
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            }
-
-            .product-cell:hover {
-                transform: translateY(-8px);
-                /* Mengangkat kotak ke atas 8px */
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-                /* Memberikan bayangan halus */
-                border-color: transparent;
-                /* Hilangkan border biar makin clean pas ngapung */
-            }
-
-            .product-title {
-                font-weight: bold;
                 font-size: 16px;
                 line-height: 150%;
             }
 
-            .product-description {
-                font-size: 14px;
-                color: #666;
-                line-height: 150%;
-            }
-
-            .product-image {
-                height: 32px;
+            @media screen and (min-width: 800px) {
+                #hero { padding: 100px; }
+                .subtitle h1 { font-size: 64px; font-weight: 200; }
+                .subtitle p { font-size: 32px; }
             }
         </style>
-    </section> -->
+    </div>
+
+    <div class="clients-container">
+        <div class="clients-track">
+            <!-- Set 1 -->
+            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+            <!-- Set 2 -->
+            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+        </div>
+        <style>
+            .clients-container {
+                width: 100%;
+                overflow: hidden;
+                padding: 20px 0;
+            }
+            .clients-track {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                width: max-content;
+                animation: scroll-left 25s linear infinite;
+                filter: grayscale(100%);
+            }
+
+            .client-logo img {
+                max-width: 120px;
+                max-height: 80px;
+                object-fit: contain;
+            }
+
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+
+            @media screen and (min-width: 800px) {
+                .clients-track { gap: 40px; }
+                .client-logo img { max-width: 200px; max-height: 150px; }
+            }
+        </style>
+    </div>
+
     <p class="quote">We bridge the precision of technology <br> with the poetry of self-care.</p>
     <style>
         .quote {
-            padding: 200px 100px;
-            font-size: 42px;
+            padding: 80px 20px;
+            font-size: 24px;
             font-weight: 300;
-            line-height: 150%;
+            line-height: 140%;
             text-align: center;
             background: linear-gradient(133.31deg, #35C0A7 -3.05%, #20595E 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-
+        }
+        @media screen and (min-width: 800px) {
+            .quote { padding: 150px 40px; font-size: 42px; }
         }
     </style>
+
     <div id="explanation">
+        <!-- Cell 1 -->
         <div class="explanation-cell">
             <div class="explanation-quote" style="background-color: #CFF0F4; background-image: url('matrix.svg');">
                 <p>Through our AI skin analysis, we gently read the unique canvas of people's living beauty</p>
             </div>
             <div class="column">
-                <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
+                <div class="media-container">
+                    <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
+                </div>
                 <div class="explanation-product">
                     <p class="label">PRODUCT</p>
                     <p class="explanation-title">AI Skin Analysis</p>
-                    <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
-                        phone/tablet/computer's camera</p>
+                    <p class="explanation-description">Intelligent face scanner that can analyze skin problems using phone/tablet/computer's camera</p>
                 </div>
             </div>
         </div>
-        <div class="explanation-cell">
+        <!-- Cell 2 -->
+        <div class="explanation-cell alternate">
+            <div class="explanation-quote" style="background-color: #CCF1E8; background-image: url('radial.svg');">
+                <p>While our intuitive AI Agent serves as a mindful guide for your customer journey</p>
+            </div>
             <div class="column">
                 <div id="chat-hero">
                     <iframe src="chat.html" class="scaled-frame" scrolling="no"></iframe>
@@ -434,26 +334,23 @@
                 <div class="explanation-product">
                     <p class="label">PRODUCT</p>
                     <p class="explanation-title">Conversion Tech® AI Agent</p>
-                    <p class="explanation-description">Digital concierge for brand to help customers book appointment,
-                        following-up them, and manage customer relation as well</p>
+                    <p class="explanation-description">Digital concierge for brand to help customers book appointment, following-up them, and manage customer relation as well</p>
                 </div>
             </div>
-            <div class="explanation-quote" style="background-color: #CCF1E8; background-image: url('radial.svg');">
-                <p>While our intuitive AI Agent serves as a mindful guide for your customer journey</p>
-            </div>
         </div>
+        <!-- Cell 3 -->
         <div class="explanation-cell">
             <div class="explanation-quote" style="background-color: #C0D0D0; background-image: url('diamond.svg');">
                 <p>Together, they open the doors to a curated wellness platform</p>
             </div>
             <div class="column">
-                <img src="fabulasmockup.png" alt="product" class="explanation-image">
+                <div class="media-container">
+                    <img src="fabulasmockup.png" alt="product" class="explanation-image">
+                </div>
                 <div class="explanation-product">
                     <p class="label">PRODUCT</p>
-                    <p class="explanation-title">Platform for consumers to book their wellness services and buy products
-                    </p>
-                    <p class="explanation-description">It also allows merchants to list their brands and services for
-                        brand visibility</p>
+                    <p class="explanation-title">Platform for consumers to book services & buy products</p>
+                    <p class="explanation-description">It also allows merchants to list their brands and services for brand visibility</p>
                 </div>
             </div>
         </div>
@@ -461,34 +358,32 @@
             #explanation {
                 display: flex;
                 flex-direction: column;
-                margin: 0 auto;
+                width: 100%;
             }
 
             .explanation-cell {
                 display: flex;
-                flex-direction: row;
-                width: 100svw;
-                transition: opacity 0.2s ease, visibility 0.2s ease;
-                align-items: stretch;
+                flex-direction: column;
+                width: 100%;
             }
 
             .explanation-quote {
-                padding: 100px;
+                padding: 40px 20px;
                 width: 100%;
-                height: 100svh;
-                flex-grow: 1;
+                min-height: 40vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-size: 100%;
+                background-size: cover;
                 background-repeat: no-repeat;
-                background-position: center bottom;
+                background-position: center;
             }
 
             .explanation-quote p {
-                font-size: 42px;
+                font-size: 24px;
                 font-weight: 300;
-                line-height: 150%;
+                line-height: 140%;
+                text-align: center;
                 background: linear-gradient(133.31deg, #13404A -3.05%, #10788E 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -496,22 +391,40 @@
                 text-fill-color: transparent;
             }
 
+            .column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .media-container {
+                width: 100%;
+                height: 300px;
+            }
+
+            .column img, .column video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
             .explanation-product {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                flex-grow: 1;
                 gap: 10px;
-                padding: 50px;
+                padding: 30px 20px;
+                background: #fff;
             }
 
             .explanation-title {
-                font-size: 32px;
-                line-height: 150%;
+                font-size: 22px;
+                line-height: 130%;
+                font-weight: 400;
             }
 
             .explanation-description {
-                font-size: 24px;
+                font-size: 16px;
                 color: #666;
                 line-height: 150%;
             }
@@ -519,120 +432,73 @@
             .label {
                 font-weight: 400;
                 font-size: 10px;
-                letter-spacing: 0.5em;
-                color: #000000;
-
-            }
-
-            .column {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                flex-grow: 1;
-                width: 100%;
-                height: 90svh;
+                letter-spacing: 0.3em;
+                color: #888;
             }
 
             #chat-hero {
-                background: url(lines.jpg);
-                background-size: 100% 100%;
+                background: url(lines.jpg) center center;
+                background-size: cover;
                 width: 100%;
-                height: 100%;
-                aspect-ratio: 1/1;
+                height: 350px;
                 overflow: hidden;
-                padding: 0px 10%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
             }
 
             .scaled-frame {
-                width: 50%;
-                position: relative;
-                bottom: -100px;
+                width: 80%;
+                height: 90%;
                 border: none;
                 background: none;
             }
 
-            .column img,
-            .column video,
-            .column iframe {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            @media screen and (max-width: 800px) {
-                .explanation-cell {
-                    flex-direction: column;
-                }
-
-                .column {
-                    width: 100%;
-                }
-
-                .explanation-quote {
-                    width: 100%;
-                    height: 60svw;
-                }
-
-                .explanation-quote p {
-                    font-size: 24px;
-                }
-
-                .explanation-product {
-                    height: 40svw;
-                }
-
-                .explanation-title {
-                    font-size: 24px;
-                    line-height: 150%;
-                }
-
-                .explanation-description {
-                    font-size: 18px;
-                    color: #666;
-                    line-height: 150%;
-                }
+            @media screen and (min-width: 800px) {
+                .explanation-cell { flex-direction: row; height: 100vh; }
+                .explanation-cell.alternate { flex-direction: row-reverse; }
+                .explanation-quote { width: 50%; height: 100%; padding: 60px; }
+                .explanation-quote p { font-size: 36px; text-align: left; }
+                .column { width: 50%; height: 100%; }
+                .media-container { height: 60%; }
+                #chat-hero { height: 60%; }
+                .explanation-product { height: 40%; padding: 40px; }
+                .explanation-title { font-size: 28px; }
+                .explanation-description { font-size: 20px; }
             }
         </style>
     </div>
+
     <section id="clients">
-        <h2>Splendify has been <b>trusted</b> by more than 250 clients </h2>
+        <h2>Splendify has been <b>trusted</b> by more than 250 clients</h2>
         <div class="testimonials">
             <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon">
+                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
                 <p class="testimonial-text">
-                    As a healthcare provider, we must adhere to stringent marketing and advertising regulations set by
-                    the Ministry of Health. The team at Splendify collaborates with us to gain a deep understanding of
-                    our services, offering clear guidance while ensuring compliance with these guidelines. Splendify is
-                    very well verse with the Do and Don’t in Singapore’s medical sector.
+                    As a healthcare provider, we must adhere to stringent marketing and advertising regulations set by the Ministry of Health. The team at Splendify collaborates with us to gain a deep understanding of our services.
                 </p>
-                <img src="brand/covette.png" alt="" class="testimonial-sender">
+                <img src="brand/covette.png" alt="covette" class="testimonial-sender">
             </div>
             <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon">
+                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
                 <p class="testimonial-text">
-                    The chiropractic market is highly competitive, but Splendify’s “Conversion Tech” solution has helped
-                    us increase our ROI by more than 8X. The team takes the time to really understand our business
-                    before embarking on any project, ensuring their strategies are perfectly aligned with our goals.
+                    The chiropractic market is highly competitive, but Splendify’s “Conversion Tech” solution has helped us increase our ROI by more than 8X. The team takes the time to really understand our business.
                 </p>
-                <img src="brand/natrahea.png" alt="" class="testimonial-sender">
+                <img src="brand/natrahea.png" alt="natrahea" class="testimonial-sender">
             </div>
             <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon">
+                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
                 <p class="testimonial-text">
-                    We have partnered with numerous agencies over the years, but Splendify truly sets itself apart.
-                    Utilizing AI and their proprietary “Conversion Tech” solution, they not only drive leads but also
-                    manage appointment setting and ensure customer show-ups for our beauty and aesthetics services.
+                    We have partnered with numerous agencies over the years, but Splendify truly sets itself apart. Utilizing AI and their proprietary “Conversion Tech” solution, they manage appointment setting perfectly.
                 </p>
-                <img src="brand/drhaach.png" alt="" class="testimonial-sender">
+                <img src="brand/drhaach.png" alt="drhaach" class="testimonial-sender">
             </div>
             <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon">
+                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
                 <p class="testimonial-text">
-                    In Singapore’s competitive spa and body care industry, attracting new customers is crucial.
-                    The Splendify team has been instrumental and creative in our success by leveraging various
-                    solutions, including engaging social media posts on platforms like Xiao Hong Shu and TikTok.
+                    In Singapore’s competitive spa and body care industry, attracting new customers is crucial. The Splendify team has been instrumental and creative in our success by leveraging various solutions.
                 </p>
-                <img src="brand/fil.png" alt="" class="testimonial-sender">
+                <img src="brand/fil.png" alt="fil" class="testimonial-sender">
             </div>
         </div>
 
@@ -641,111 +507,80 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 10%;
-                gap: 50px;
-                width: 100vw;
-                /* Hapus padding kiri-kanan biar nggak nabrak saat looping */
-                overflow: hidden;
-                /* Sembunyikan gambar yang keluar dari layar & ilangin scrollbar */
+                padding: 60px 20px;
+                gap: 30px;
+                width: 100%;
                 box-sizing: border-box;
-                margin: 0 auto;
             }
 
             #clients h2 {
                 text-align: center;
-                font-weight: 300;
-                font-size: 48px;
+                font-size: 26px;
             }
 
             .testimonials {
                 display: flex;
                 flex-direction: row;
-                padding: 0px 50px;
-                gap: 5px;
+                gap: 20px;
                 width: 100%;
-                order: 2;
-                flex-grow: 0;
-                overflow-x: scroll;
+                overflow-x: auto;
+                padding: 10px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
             }
 
             .testimonial-cell {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 30px 20px;
-                gap: 20px;
-                min-width: 300px;
-                height: 400px;
+                justify-content: space-between;
+                padding: 25px 20px;
+                min-width: 280px;
+                width: 85%;
+                height: 340px;
                 background: #F4F4F4;
-                flex-grow: 0;
+                border-radius: 12px;
+                scroll-snap-align: center;
+                flex-shrink: 0;
             }
 
             .testimonial-text {
-                font-size: 14px;
+                font-size: 13px;
                 line-height: 150%;
+                color: #333;
             }
 
             .testimonial-sender {
-                height: 80px;
-                flex: none;
-                order: 1;
-                flex-grow: 0;
+                height: 50px;
+                object-fit: contain;
+                align-self: flex-start;
             }
 
-            @media screen and (max-width: 800px) {
-                #clients {
-                    padding: 5%;
-                }
-
-                #clients h2 {
-                    font-size: 32px;
-                }
-
-                .testimonials {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    padding: 0px 0px;
-                    gap: 10px;
-                    width: 100%;
-                    order: 2;
-                    flex-grow: 0;
-                }
-
-                .testimonial-cell {
-                    padding: 30px 20px;
-                    gap: 10px;
-                    width: 100%;
-                    min-width: 200px;
-                    min-height: 400px;
-                }
+            @media screen and (min-width: 800px) {
+                #clients { padding: 80px 50px; gap: 50px; }
+                #clients h2 { font-size: 42px; }
+                .testimonials { overflow-x: visible; grid-template-columns: repeat(2, 1fr); display: grid; }
+                .testimonial-cell { width: 100%; min-width: auto; height: 380px; }
+                .testimonial-text { font-size: 14px; }
+                .testimonial-sender { height: 60px; }
             }
         </style>
     </section>
+
     <section id="contact">
         <div class="contact-text">
             <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
-                personalized AI technology</p>
+            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our personalized AI technology</p>
             <button class="contact-button">Book Free Consultation</button>
         </div>
         <style>
             #contact {
                 display: flex;
-                flex-direction: row;
-                gap: 0px;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                z-index: 2;
                 background: white;
                 width: 100%;
-                margin: 0 auto;
-            }
-
-            #contact video {
-                aspect-ratio: 1/1;
-                width: 100%;
-                max-width: 500px;
-                filter: brightness(150%);
+                padding: 60px 20px;
             }
 
             .contact-text {
@@ -754,98 +589,90 @@
                 align-items: center;
                 gap: 20px;
                 width: 100%;
-                max-width: 50vw;
-                padding: 50px;
+                max-width: 600px;
                 text-align: center;
             }
 
             .contact-text p {
                 line-height: 150%;
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 300;
+                color: #555;
             }
 
             .contact-text h2 {
-                font-size: 48px;
-                font-weight: 300;
-                line-height: 150%;
+                font-size: 28px;
+                line-height: 130%;
             }
 
             .contact-button {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 20px;
-                gap: 8px;
-                width: fit-content;
+                padding: 14px 28px;
                 background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
                 border-radius: 96px;
                 color: white;
                 font-weight: bold;
-                font-size: 16px;
+                font-size: 15px;
                 border: none;
+                cursor: pointer;
+                transition: transform 0.2s;
+                box-shadow: 0 4px 15px rgba(53, 192, 167, 0.3);
             }
 
             .contact-button:hover {
-                background-color: #0056b3;
+                transform: scale(1.03);
             }
 
-            @media screen and (max-width: 800px) {
-                #contact h2 {
-                    font-size: 32px;
-                }
-
-                #contact p {
-                    font-size: 16px;
-                }
+            @media screen and (min-width: 800px) {
+                #contact { padding: 100px 50px; }
+                .contact-text h2 { font-size: 48px; }
+                .contact-text p { font-size: 20px; }
+                .contact-button { font-size: 16px; }
             }
         </style>
     </section>
+
     <section id="footer">
-        <img src="splendify.svg" alt="splendify" class="footer-logo">
+        <div class="footer-brand">
+            <img src="splendify.svg" alt="splendify" class="footer-logo">
+        </div>
         <div id="footer-menus">
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Products</p>
                 <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="footer-menu" href="aiagent.html">AI Agent</a>
                 <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">More</p>
-                <a class="footer-menu">About Splendify</a>
+                <a class="footer-menu" href="#">About Splendify</a>
                 <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Socials</p>
-                <p class="footer-menu">LinkedIn</p>
-                <p class="footer-menu">Email</p>
+                <a class="footer-menu" href="#">LinkedIn</a>
+                <a class="footer-menu" href="#">Email</a>
             </div>
         </div>
         <style>
             #footer {
-                text-align: left;
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: start;
-                padding: 10%;
+                flex-direction: column;
+                gap: 40px;
+                padding: 60px 20px;
                 width: 100%;
                 background-color: white;
-                position: relative;
-                z-index: 10;
-
+                border-top: 1px solid #eee;
             }
 
             .footer-logo {
-                max-width: 200px;
-                margin-bottom: 20px;
+                max-width: 140px;
             }
 
             #footer-menus {
-                display: flex;
-                flex-direction: row;
-                gap: 50px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                width: 100%;
             }
 
             .footer-menu-list {
@@ -857,26 +684,42 @@
             .footer-menu {
                 color: #00000080;
                 margin: 0;
-                font-size: 12px;
+                font-size: 13px;
                 text-decoration: none;
+                transition: color 0.2s;
+            }
+            
+            .footer-menu:hover {
+                color: #000;
             }
 
             .footer-menu-title {
                 font-size: 12px;
-                letter-spacing: 15%;
+                font-weight: 700;
+                letter-spacing: 0.1em;
                 text-transform: uppercase;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            @media screen and (min-width: 800px) {
+                #footer { flex-direction: row; justify-content: space-between; align-items: start; padding: 80px 50px; }
+                #footer-menus { display: flex; flex-direction: row; gap: 60px; width: auto; }
+                .footer-logo { max-width: 180px; }
             }
         </style>
     </section>
+
     <img id="matrix" src="matrix.svg" alt="matrix">
     <style>
         #matrix {
-            position: relative;
-            bottom: 0;
             width: 100%;
-            height: 100px;
+            height: 60px;
             object-fit: cover;
-            z-index: -1;
+            opacity: 0.5;
+        }
+        @media screen and (min-width: 800px) {
+            #matrix { height: 100px; }
         }
     </style>
 </body>
