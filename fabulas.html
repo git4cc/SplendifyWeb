@@ -58,7 +58,8 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 25px 50px;
-                box-sizing: border-box; /* Mencegah overflow horizontal */
+                box-sizing: border-box;
+                /* Mencegah overflow horizontal */
                 z-index: 100;
             }
 
@@ -114,6 +115,11 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            @media screen and (max-width: 1000px) {
+                header {
+                    display: none;
+                }
+            }
         </style>
         <script>
             const productsMenuBar = document.getElementById('products-menu-bar');
@@ -140,7 +146,7 @@
             pagesMenuBar.addEventListener('mouseleave', () => {
                 document.getElementById('menu-about').style.display = 'none';
                 document.getElementById('menu-privacy').style.display = 'none';
-            }); 
+            });
 
             headerLogo.addEventListener('click', () => {
                 window.location.href = 'index.html';
@@ -205,7 +211,12 @@
                 transform: translateX(25%) translateY(0%);
                 z-index: 2;
             }
-
+            @media screen and (max-width: 1000px) {
+                #screens {
+                    scale: 3;
+                    transform: translateX(40%) translateY(10%);
+                }
+            }
             #white-background {
                 height: 10svh;
                 width: 100svw;
@@ -237,7 +248,7 @@
             #quote {
                 width: 100svw;
                 padding: 15%;
-
+                background: white;
             }
             #quote p {
                 font-size: 36px;
@@ -257,7 +268,7 @@
             <img src="fabulas.png" alt="" class="cell-image">
         </div>
         <div class="explanation-cell">
-            <img src="erp.png" alt="" class="cell-image">
+            <img src="erp.png" alt="" class="cell-image" id="erp">
             <div class="cell-box" style="background-color: #BFDDF7;"><p>Harnessing cutting-edge audience technology and deep expertise in the  Health & Beauty sector, we craft compelling digital campaigns,  fostering brand loyalty, and sustainable growth</p></div>
         </div>
         <style>
@@ -285,6 +296,20 @@
                 width: 50%;
                 background-size: 100% 100%;
             }
+            @media screen and (max-width: 1000px) {
+                .explanation-cell {
+                    flex-direction: column;
+                }
+                .cell-box {
+                    width: 100%;
+                }
+                .cell-image {
+                    width: 100%;
+                }
+                #erp {
+                    order: 2;
+                }
+            }
         </style>
     </section>
     <section id="contact">
@@ -301,11 +326,14 @@
                 align-items: center;
                 justify-content: center;
                 padding: 15%;
+                background: white;
             }
             #contact-text {
                 width: 50%;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 gap: 20px;
                 padding: 10%;
             }
@@ -313,9 +341,12 @@
                 font-size: 36px;
                 font-weight: 300;
                 line-height: 150%;
+                text-align: center;
             } #contact-text p {
                 font-size: 16px;
                 line-height: 150%;
+                opacity: 0.5;
+                text-align: center;
             }
             #contact-img {
                 width: 50%;
@@ -339,6 +370,17 @@
                 font-weight: bold;
                 font-size: 16px;
                 border: none;
+            }
+            @media screen and (max-width: 1000px) {
+                #contact {
+                    flex-direction: column;
+                }
+                #contact-text {
+                    width: 100%;
+                }
+                #contact-img {
+                    width: 100%;
+                }
             }
         </style>
     </section>
@@ -375,7 +417,6 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
-                
             }
 
             .footer-logo {
@@ -407,7 +448,156 @@
                 letter-spacing: 15%;
                 text-transform: uppercase;
             }
+
+            @media screen and (max-width: 1000px) {
+                #footer {
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 20px;
+                }
+
+                #footer-menus {
+                    flex-direction: column;
+                }
+            }
         </style>
+    </section>
+    <img src="linebg.svg" alt="" id="lines">
+    <style>
+        #lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -99;
+        }
+    </style>
+    <section id="nav-sidebar">
+        <div id="nav-sidebar-header">
+            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
+            <img src="close.svg" alt="close" id="close">
+        </div>
+        <div id="nav-sidebar-menus">
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Products</a>
+                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
+            </div>
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Pages</a>
+                <a class="nav-sidebar-menu">About Splendify</a>
+                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <style>
+            #nav-sidebar {
+                display: none;
+                flex-direction: column;
+                gap: 100px;
+                align-items: start;
+                padding: 20px 40px;
+                width: 100svw;
+                height: 100svh;
+                background-color: rgba(255, 255, 255, 0.75);
+                position: fixed;
+                top: 0;
+                z-index: 100;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+            }
+
+            #nav-sidebar-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-sidebar-logo {
+                height: 20px;
+            }
+
+            #nav-sidebar-menus {
+                display: flex;
+                flex-direction: column;
+                gap: 150px;
+            }
+
+            .nav-sidebar-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .nav-sidebar-menu {
+                color: #00000080;
+                margin: 0;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .menu-label {
+                font-size: 16px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
+            }
+        </style>
+    </section>
+    <section id="nav-mobile">
+        <img src="splendify.svg" alt="" class="logo">
+        <img src="menu.svg" alt="menu" id="menu">
+        <style>
+            .logo {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #menu {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #nav-mobile {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                z-index: 10;
+            }
+            @media screen and (min-width: 1000px) {
+                #nav-mobile {
+                    display: none;
+                }
+            }
+        </style>
+        <script>
+            const menu = document.getElementById('menu');
+            const sidebar = document.getElementById('nav-sidebar');
+            const close = document.getElementById('close');
+
+            menu.addEventListener('click', () => {
+                sidebar.style.display = 'flex';
+            });
+
+            close.addEventListener('click', () => {
+                sidebar.style.display = 'none';
+            });
+
+        </script>
     </section>
 </body>
 

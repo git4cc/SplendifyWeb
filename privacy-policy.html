@@ -62,7 +62,7 @@
         <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
             <p class="menu title">PAGES</p>
             <a class="menu" id="menu-about">About Splendify</a>
-            <a class="menu" id="menu-privacy">Privacy Policy</a>
+            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
         </div>
         <style>
             header {
@@ -131,6 +131,11 @@
                 position: fixed;
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            @media screen and (max-width: 1000px) {
+                header {
+                    display: none;
+                }
             }
         </style>
         <script>
@@ -574,7 +579,6 @@
                 background-color: white;
                 position: relative;
                 z-index: 10;
-                
             }
 
             .footer-logo {
@@ -606,8 +610,145 @@
                 letter-spacing: 15%;
                 text-transform: uppercase;
             }
+
+            @media screen and (max-width: 1000px) {
+                #footer {
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 20px;
+                }
+
+                #footer-menus {
+                    flex-direction: column;
+                }
+            }
         </style>
-    </ßsection>
+    </section>
+    <section id="nav-sidebar">
+        <div id="nav-sidebar-header">
+            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
+            <img src="close.svg" alt="close" id="close">
+        </div>
+        <div id="nav-sidebar-menus">
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Products</a>
+                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
+            </div>
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Pages</a>
+                <a class="nav-sidebar-menu">About Splendify</a>
+                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <style>
+            #nav-sidebar {
+                display: none;
+                flex-direction: column;
+                gap: 100px;
+                align-items: start;
+                padding: 20px 40px;
+                width: 100svw;
+                height: 100svh;
+                background-color: rgba(255, 255, 255, 0.75);
+                position: fixed;
+                top: 0;
+                z-index: 100;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+            }
+
+            #nav-sidebar-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-sidebar-logo {
+                height: 20px;
+            }
+
+            #nav-sidebar-menus {
+                display: flex;
+                flex-direction: column;
+                gap: 150px;
+            }
+
+            .nav-sidebar-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .nav-sidebar-menu {
+                color: #00000080;
+                margin: 0;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .menu-label {
+                font-size: 16px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
+            }
+        </style>
+    </section>
+    <section id="nav-mobile">
+        <img src="splendify.svg" alt="" class="logo">
+        <img src="menu.svg" alt="menu" id="menu">
+        <style>
+            .logo {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #menu {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #nav-mobile {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                z-index: 10;
+            }
+            @media screen and (min-width: 1000px) {
+                #nav-mobile {
+                    display: none;
+                }
+            }
+        </style>
+        <script>
+            const menu = document.getElementById('menu');
+            const sidebar = document.getElementById('nav-sidebar');
+            const close = document.getElementById('close');
+
+            menu.addEventListener('click', () => {
+                sidebar.style.display = 'flex';
+            });
+
+            close.addEventListener('click', () => {
+                sidebar.style.display = 'none';
+            });
+
+        </script>
+    </section>
 </body>
 
 </html>

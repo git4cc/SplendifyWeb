@@ -120,6 +120,11 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            @media screen and (max-width: 1000px) {
+                header {
+                    display: none;
+                }
+            }
         </style>
         <script>
             const productsMenuBar = document.getElementById('products-menu-bar');
@@ -323,31 +328,31 @@
             <div id="result-mobile">
                 <h2>AI Skin Analysis Result</h2>
                 <div class="result-wrapper">
-                <div class="result-cell sebum">
-                    <p class="result-title">Sebum</p>
-                    <p class="result-number">3.0</p>
-                    <p class="result-desc">Moderate</p>
-                </div>
-                <div class="result-cell wrinkle">
-                    <p class="result-title">Wrinkle</p>
-                    <p class="result-number">5.0</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell redness">
-                    <p class="result-title">Redness</p>
-                    <p class="result-number">4.4</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell pore">
-                    <p class="result-title">Pore</p>
-                    <p class="result-number">5.0</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell pigment">
-                    <p class="result-title">Pigment</p>
-                    <p class="result-number">2.5</p>
-                    <p class="result-desc">Severe</p>
-                </div>
+                    <div class="result-cell sebum">
+                        <p class="result-title">Sebum</p>
+                        <p class="result-number">3.0</p>
+                        <p class="result-desc">Moderate</p>
+                    </div>
+                    <div class="result-cell wrinkle">
+                        <p class="result-title">Wrinkle</p>
+                        <p class="result-number">5.0</p>
+                        <p class="result-desc">Normal</p>
+                    </div>
+                    <div class="result-cell redness">
+                        <p class="result-title">Redness</p>
+                        <p class="result-number">4.4</p>
+                        <p class="result-desc">Normal</p>
+                    </div>
+                    <div class="result-cell pore">
+                        <p class="result-title">Pore</p>
+                        <p class="result-number">5.0</p>
+                        <p class="result-desc">Normal</p>
+                    </div>
+                    <div class="result-cell pigment">
+                        <p class="result-title">Pigment</p>
+                        <p class="result-number">2.5</p>
+                        <p class="result-desc">Severe</p>
+                    </div>
                 </div>
                 <style>
                     /* Mobile Result Styles */
@@ -366,6 +371,7 @@
                         overflow-x: scroll;
                         /* Antisipasi layar hp pendek agar bisa di-scroll */
                     }
+
                     #result-mobile h2 {
                         position: absolute;
                         top: 0%;
@@ -374,6 +380,7 @@
                         font-size: 32px;
                         font-weight: 300;
                     }
+
                     .result-wrapper {
                         display: flex;
                         flex-direction: row;
@@ -431,6 +438,12 @@
                 <img id="img1" class="img-layer" src="face-eye-open.png" alt="Open">
                 <img id="img2" class="img-layer" src="face-eye-half-close.png" alt="Half">
                 <img id="img3" class="img-layer" src="face-eye-close.png" alt="Close">
+                <img id="img4" class="img-layer" src="face-result.jpg" alt="Result">
+                <img id="sebum" class="img-layer" src="sebum.png" alt="Sebum">
+                <img id="wrinkle" class="img-layer" src="wrinkle.png" alt="Wrinkle">
+                <img id="redness" class="img-layer" src="redness.png" alt="Redness">
+                <img id="pore" class="img-layer" src="pore.png" alt="Pore">
+                <img id="pigmentation" class="img-layer" src="pigmentation.png" alt="Pigmentation">
                 <div id="lightWipe" class="light"></div>
             </div>
         </div>
@@ -488,6 +501,10 @@
                 z-index: 3;
             }
 
+            #img4 {
+                z-index: 4;
+            }
+
             .light {
                 position: absolute;
                 width: 150px;
@@ -497,108 +514,172 @@
                 opacity: 0;
                 will-change: transform, opacity;
             }
+
+            /* Aktifkan interaksi hover pada result-cell */
+            .result-cell {
+                pointer-events: auto !important;
+                /* Wajib agar bisa di-hover */
+                cursor: pointer;
+            }
+
+            /* Atur posisi layer gambar-gambar masalah kulit di atas img4 */
+            #sebum,
+            #wrinkle,
+            #redness,
+            #pore,
+            #pigmentation {
+                z-index: 5;
+                transition: opacity 0.3s ease;
+                /* Transisi halus saat fade in/out */
+            }
         </style>
-         <script>
-        function map(val, inMin, inMax, outMin, outMax) {
-            if (val < inMin) return outMin;
-            if (val > inMax) return outMax;
-            return (val - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-        }
-
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleScrollAnimation();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        function handleScrollAnimation() {
-            const track = document.getElementById('scroll-track');
-            const trackTop = track.offsetTop;
-            const scrollY = window.scrollY;
-
-            // Hitung scroll HANYA ketika scroll-track mulai mencapai atas layar
-            let rawScroll = (scrollY - trackTop) / (track.offsetHeight - window.innerHeight);
-
-            // Batasi nilai scroll maksimal di angka 1 dan minimal 0
-            const scroll = Math.min(Math.max(rawScroll, 0), 1);
-
-            let imgX = 0;
-            let imgY = 0;
-            let imgScale = 1;
-
-            if (scroll <= 0.1) {
-                imgX = map(scroll, 0.0, 0.1, 0, 0);
-                imgY = map(scroll, 0.0, 0.1, 15, 15);
-                imgScale = 1;
-            }
-            else if (scroll <= 0.15) {
-                imgX = 0;
-                imgY = map(scroll, 2, 2, 15, 15);
-                imgScale = map(scroll, 0.15, 0.25, 1, 1);
-            }
-            else if (scroll <= 0.25) {
-                imgX = 0;
-                imgY = map(scroll, 0.0, 0.1, 15, 20);
-                imgScale = map(scroll, 0.15, 0.25, 1, 1.6);
-            }
-            else if (scroll <= 0.5) {
-                imgX = 0;
-                imgY = 20;
-                imgScale = 1.6;
-            }
-            else if (scroll <= 0.6) {
-                imgX = 0;
-                imgY = 20;
-                imgScale = map(scroll, 0.5, 0.6, 1.6, 0.7);
-            }
-            else if (scroll <= 0.7) {
-                imgX = 0;
-                imgY = map(scroll, 0.1, 0.1, 20, 20);
-                imgScale = 0.7;
-            }
-            else {
-                imgX = 0;
-                imgY = 20;
-                imgScale = 0.7;
+        <script>
+            function map(val, inMin, inMax, outMin, outMax) {
+                if (val < inMin) return outMin;
+                if (val > inMax) return outMax;
+                return (val - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
             }
 
-            document.getElementById('img-container').style.transform = `translate(${imgX}vw, ${imgY}vh) scale(${imgScale})`;
+            let ticking = false;
 
-            let eyeOpacity = map(scroll, 0.15, 0.25, 0, 1) - map(scroll, 0.5, 0.6, 0, 1);
-            document.getElementById('img2').style.opacity = eyeOpacity;
-            document.getElementById('img3').style.opacity = eyeOpacity;
-
-            const light = document.getElementById('lightWipe');
-            if (scroll > 0.3 && scroll < 0.45) {
-                light.style.opacity = 1;
-                light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 600)}px)`;
-            } else {
-                light.style.opacity = 0;
-            }
-
-            document.getElementById('result').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
-            document.getElementById('result-mobile').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
-
-            const cells = document.querySelectorAll('.result-cell');
-            const spread = map(scroll, 0.75, 0.9, 0, 1);
-
-            cells.forEach(cell => {
-                const tx = parseFloat(cell.getAttribute('data-x')) * spread;
-                const ty = parseFloat(cell.getAttribute('data-y')) * spread;
-                cell.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(${0.5 + (0.5 * spread)})`;
-                cell.style.opacity = spread;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleScrollAnimation();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
-        }
 
-        // Panggil satu kali saat muat halaman
-        window.dispatchEvent(new Event('scroll'));
-    </script>
+            function handleScrollAnimation() {
+                const track = document.getElementById('scroll-track');
+                const trackTop = track.offsetTop;
+                const scrollY = window.scrollY;
+
+                // Hitung scroll HANYA ketika scroll-track mulai mencapai atas layar
+                let rawScroll = (scrollY - trackTop) / (track.offsetHeight - window.innerHeight);
+
+                // Batasi nilai scroll maksimal di angka 1 dan minimal 0
+                const scroll = Math.min(Math.max(rawScroll, 0), 1);
+
+                let imgX = 0;
+                let imgY = 0;
+                let imgScale = 1;
+
+                if (scroll <= 0.1) {
+                    imgX = map(scroll, 0.0, 0.1, 0, 0);
+                    imgY = map(scroll, 0.0, 0.1, 15, 15);
+                    imgScale = 1;
+                }
+                else if (scroll <= 0.15) {
+                    imgX = 0;
+                    imgY = map(scroll, 2, 2, 15, 15);
+                    imgScale = map(scroll, 0.15, 0.25, 1, 1);
+                }
+                else if (scroll <= 0.25) {
+                    imgX = 0;
+                    imgY = map(scroll, 0.0, 0.1, 15, 20);
+                    imgScale = map(scroll, 0.15, 0.25, 1, 1.6);
+                }
+                else if (scroll <= 0.5) {
+                    imgX = 0;
+                    imgY = 20;
+                    imgScale = 1.6;
+                }
+                else if (scroll <= 0.6) {
+                    imgX = 0;
+                    imgY = 20;
+                    imgScale = map(scroll, 0.5, 0.6, 1.6, 0.7);
+                }
+                else if (scroll <= 0.7) {
+                    imgX = 0;
+                    imgY = map(scroll, 0.1, 0.1, 20, 20);
+                    imgScale = 0.7;
+                }
+                else {
+                    imgX = 0;
+                    imgY = 20;
+                    imgScale = 0.7;
+                }
+
+                document.getElementById('img-container').style.transform = `translate(${imgX}vw, ${imgY}vh) scale(${imgScale})`;
+
+                let eyeOpacity = map(scroll, 0.15, 0.25, 0, 1) - map(scroll, 0.5, 0.6, 0, 1);
+                document.getElementById('img2').style.opacity = eyeOpacity;
+                document.getElementById('img3').style.opacity = eyeOpacity;
+
+                const light = document.getElementById('lightWipe');
+                if (scroll > 0.3 && scroll < 0.45) {
+                    light.style.opacity = 1;
+                    light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 600)}px)`;
+                } else {
+                    light.style.opacity = 0;
+                }
+
+                // Memunculkan kontainer Result
+                document.getElementById('result').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
+                document.getElementById('result-mobile').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
+
+                // Memunculkan gambar face-result (img4) bersamaan dengan area result
+                document.getElementById('img4').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
+
+                // Animasi sebaran result cells
+                const cells = document.querySelectorAll('.result-cell');
+                const spread = map(scroll, 0.75, 0.9, 0, 1);
+
+                cells.forEach(cell => {
+                    const tx = parseFloat(cell.getAttribute('data-x')) * spread;
+                    const ty = parseFloat(cell.getAttribute('data-y')) * spread;
+                    cell.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(${0.5 + (0.5 * spread)})`;
+                    cell.style.opacity = spread;
+                });
+            }
+
+            // =========================================================
+            // FITUR HOVER GAMBAR PROBLEM KULIT
+            // =========================================================
+
+            // Mapping nama class pada result-cell ke ID gambar
+            const imageMapping = {
+                'sebum': 'sebum',
+                'wrinkle': 'wrinkle',
+                'redness': 'redness',
+                'pore': 'pore',
+                'pigment': 'pigmentation' // Class pigment -> ID pigmentation
+            };
+
+            const allResultCells = document.querySelectorAll('.result-cell');
+
+            allResultCells.forEach(cell => {
+                // Cari class mana yang cocok dengan mapping
+                let targetImageId = null;
+                for (let className in imageMapping) {
+                    if (cell.classList.contains(className)) {
+                        targetImageId = imageMapping[className];
+                        break;
+                    }
+                }
+
+                // Jika ditemukan pasangan gambar, pasang event hover
+                if (targetImageId) {
+                    const targetImg = document.getElementById(targetImageId);
+
+                    // Saat mouse masuk ke card (hover in)
+                    cell.addEventListener('mouseenter', () => {
+                        targetImg.style.opacity = 1;
+                    });
+
+                    // Saat mouse keluar dari card (hover out)
+                    cell.addEventListener('mouseleave', () => {
+                        targetImg.style.opacity = 0;
+                    });
+                }
+            });
+
+            // Panggil satu kali saat muat halaman
+            window.dispatchEvent(new Event('scroll'));
+        </script>
     </section>
 
     <section class="explanation">
@@ -646,10 +727,10 @@
             }
 
             .intro-label {
-                font-weight: 400;
-                font-size: 12px;
-                letter-spacing: 15%;
-                color: #000000;
+                font-weight: 500;
+                font-size: 11px;
+                letter-spacing: 0.15em;
+                color: #35C0A7;
                 text-transform: uppercase;
             }
 
@@ -878,6 +959,7 @@
             #contact img {
                 aspect-ratio: 1/1;
                 width: 100%;
+                background: white;
             }
 
             .contact-text {
@@ -887,6 +969,7 @@
                 text-align: left;
                 width: 100%;
                 padding: 15%;
+                background: white;
             }
 
             .contact-text h2 {
@@ -999,6 +1082,132 @@
                 }
             }
         </style>
+    </section>
+
+    <section id="nav-sidebar">
+        <div id="nav-sidebar-header">
+            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
+            <img src="close.svg" alt="close" id="close">
+        </div>
+        <div id="nav-sidebar-menus">
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Products</a>
+                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
+                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
+                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
+            </div>
+            <div class="nav-sidebar-menu-list">
+                <a class="menu-label">Pages</a>
+                <a class="nav-sidebar-menu">About Splendify</a>
+                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <style>
+            #nav-sidebar {
+                display: none;
+                flex-direction: column;
+                gap: 100px;
+                align-items: start;
+                padding: 20px 40px;
+                width: 100svw;
+                height: 100svh;
+                background-color: rgba(255, 255, 255, 0.75);
+                position: fixed;
+                top: 0;
+                z-index: 100;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+            }
+
+            #nav-sidebar-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-sidebar-logo {
+                height: 20px;
+            }
+
+            #nav-sidebar-menus {
+                display: flex;
+                flex-direction: column;
+                gap: 150px;
+            }
+
+            .nav-sidebar-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .nav-sidebar-menu {
+                color: #00000080;
+                margin: 0;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .menu-label {
+                font-size: 16px;
+                letter-spacing: 15%;
+                text-transform: uppercase;
+            }
+        </style>
+    </section>
+    <section id="nav-mobile">
+        <img src="splendify.svg" alt="" class="logo">
+        <img src="menu.svg" alt="menu" id="menu">
+        <style>
+            .logo {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #menu {
+                border-radius: 15px;
+                backdrop-filter: blur(50px);
+                -webkit-backdrop-filter: blur(50px);
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+            }
+
+            #nav-mobile {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                z-index: 10;
+            }
+            @media screen and (min-width: 1000px) {
+                #nav-mobile {
+                    display: none;
+                }
+            }
+        </style>
+        <script>
+            const menu = document.getElementById('menu');
+            const sidebar = document.getElementById('nav-sidebar');
+            const close = document.getElementById('close');
+
+            menu.addEventListener('click', () => {
+                sidebar.style.display = 'flex';
+            });
+
+            close.addEventListener('click', () => {
+                sidebar.style.display = 'none';
+            });
+
+        </script>
     </section>
 </body>
 
