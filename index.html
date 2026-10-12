@@ -7,7 +7,8 @@
     <title>Splendify</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
 </head>
 
@@ -60,7 +61,7 @@
         <img src="splendify.svg" alt="splendify" id="header-logo">
         <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
             <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about">About Splendify</a>
+            <a class="menu" id="menu-about" href="about.html">About Splendify</a>
             <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
         </div>
         <style>
@@ -169,37 +170,38 @@
             });
         </script>
     </header>
+    
 
     <div id="hero">
         <div class="subtitle">
             <h1>A harmony of wellness, <br> beauty, and technology <br> in the most innovative <br> way possible.</h1>
             <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by
                 implementing personalized AI technology</p>
-                <div id="quickwin-banner" onclick="window.location.href='quickwin.html'">
-                    <p id="quickwin-title">Singpore SME and Non-SME/LLE Grant Available - up to $20,000</p>
-                    <p id="quickwin-description">Eligible SMEs with 30%+ Singaporean shareholding. Ask us how to apply!</p>
-                    <style>
-                        #quickwin-banner {
-                            display: flex;
-                            flex-direction: column;
-                            padding: 10px 20px;
-                            background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                            border-radius: 20px;
-                            color: white;
-                            cursor: pointer;
-                        }
+            <div id="quickwin-banner" onclick="window.location.href='wellness.html'">
+                <p id="quickwin-title">Singpore SME and Non-SME/LLE Grant Available - up to $16,000</p>
+                <p id="quickwin-description">Eligible SMEs with 30%+ Singaporean shareholding. Ask us how to apply!</p>
+                <style>
+                    #quickwin-banner {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 50px 20px;
+                        background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
+                        border-radius: 20px;
+                        color: white;
+                        cursor: pointer;
+                    }
 
-                        #quickwin-title {
-                            font-size: 18px;
-                            font-weight: 500;
-                        }
+                    #quickwin-title {
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
 
-                        #quickwin-description {
-                            font-size: 14px;
-                            font-style: italic;
-                        }
-                    </style>
-                </div>
+                    #quickwin-description {
+                        font-size: 14px;
+                        font-style: italic;
+                    }
+                </style>
+            </div>                
         </div>
         <style>
             #hero {
@@ -605,12 +607,12 @@
         </style>
     </section>
 
-    <section id="contact">
+       <section id="contact">
         <div class="contact-text">
             <h2>Ready to implement Splendify AI?</h2>
             <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
                 personalized AI technology</p>
-            <button class="contact-button">Book Free Consultation</button>
+            <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
         </div>
         <style>
             #contact {
@@ -680,7 +682,7 @@
                 }
             }
         </style>
-    </section>
+    </section> 
 
     <section id="footer">
         <img src="splendify.svg" alt="splendify" class="footer-logo">
@@ -693,13 +695,13 @@
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">More</p>
-                <a class="footer-menu">About Splendify</a>
+                <a class="footer-menu" href="about.html">About Splendify</a>
                 <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
             </div>
             <div class="footer-menu-list">
                 <p class="footer-menu-title">Socials</p>
-                <p class="footer-menu">LinkedIn</p>
-                <p class="footer-menu">Email</p>
+                <a class="footer-menu" target="_blank" href="https://sg.linkedin.com/company/splendify-pte-ltd">LinkedIn</a>
+                <a class="footer-menu" target="_blank" href="https://www.instagram.com/splendify_sg/">Instagram</a>
             </div>
         </div>
         <style>
@@ -789,7 +791,7 @@
             </div>
             <div class="nav-sidebar-menu-list">
                 <a class="menu-label">Pages</a>
-                <a class="nav-sidebar-menu">About Splendify</a>
+                <a class="nav-sidebar-menu" href="about.html">About Splendify</a>
                 <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
             </div>
         </div>

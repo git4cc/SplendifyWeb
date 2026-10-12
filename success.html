@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Sent | Splendify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="splendify-icon.svg" type="image/svg+xml">
+    <style>
+        * { box-sizing: border-box; }
+        body { display: flex; flex-direction: column; min-height: 100vh; margin: 0; overflow-x: hidden; color: #163f42; background: #fafafa url('linebg.svg') center / cover fixed; font-family: Roboto, sans-serif; }
+        header { padding: 20px clamp(20px, 5vw, 64px); }
+        .brand { display: inline-block; padding: 11px 20px; line-height: 0; background: rgba(255,255,255,.82); border-radius: 999px; box-shadow: 0 8px 30px rgba(18,67,72,.08); }
+        .brand img { height: 18px; }
+        main { display: grid; flex: 1; place-items: center; width: min(760px, calc(100% - 40px)); margin: auto; text-align: center; }
+        .confirmation { padding: clamp(36px, 7vw, 72px); background: rgba(255,255,255,.92); border: 1px solid #dcebec; border-radius: 30px; box-shadow: 0 24px 70px rgba(20,77,81,.12); }
+        .mark { display: grid; place-items: center; width: 54px; height: 54px; margin: 0 auto 25px; border-radius: 50%; color: #fff; background: linear-gradient(112deg, #35c0a7, #5bd9bb); font-size: 26px; }
+        h1 { margin: 0; font-size: clamp(38px, 6vw, 62px); font-weight: 300; letter-spacing: -.04em; line-height: 1.1; }
+        p { max-width: 500px; margin: 22px auto 0; color: #587072; font-size: 17px; line-height: 1.6; }
+        .home-link { display: inline-block; margin-top: 30px; padding: 14px 24px; border-radius: 999px; color: #fff; background: linear-gradient(112deg, #35c0a7, #5bd9bb); box-shadow: 0 8px 22px rgba(53,192,167,.23); font-size: 15px; font-weight: 700; text-decoration: none; }
+        .secondary { margin-top: 18px; color: #789092; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <header><a class="brand" href="index.html" aria-label="Splendify home"><img src="splendify.svg" alt="Splendify"></a></header>
+    <main>
+        <section class="confirmation" aria-labelledby="confirmation-heading">
+            <div class="mark" aria-hidden="true">✓</div>
+            <h1 id="confirmation-heading">Your enquiry has been sent</h1>
+            <p>Thank you for getting in touch with Splendify. Your details have been received and our team will get back to you soon.</p>
+            <a class="home-link" href="index.html">Back to Home</a>
+            <p class="secondary">You may now close this page or return to the Splendify homepage.</p>
+        </section>
+    </main>
+</body>
+</html>
